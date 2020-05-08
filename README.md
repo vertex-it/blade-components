@@ -9,7 +9,18 @@ This is where your description should go. Try and limit it to a paragraph or two
 
 ## Installation
 
-You can install the package via composer:
+In composer.json add:
+
+```json
+"repositories": [
+    {
+        "type": "path",
+        "url": "../path/to/blade-components"
+    }
+]
+```
+
+Then install the package via composer:
 
 ```bash
 composer require vertex-it/blade-components
@@ -19,9 +30,29 @@ composer require vertex-it/blade-components
 
 ### NPM Dependencies
 
+#### Image Cropper
+
+Image cropper component uses [cropper](https://github.com/fengyuanchen/cropperjs) package. To install it in your project, do:
+
+```bash
+npm install cropper
+```
+
+In `resources/js/bootstrap.js` add:
+
+```js
+window.cropper = require('cropper');
+```
+
+In `resources/sass/app.scss` add:
+
+```scss
+@import '~cropper/dist/cropper.min.css';
+```
+
 #### Date
 
-Date components uses [flatpickr](https://github.com/flatpickr/flatpickr) package. To install it in your project, do:
+Date component uses [flatpickr](https://github.com/flatpickr/flatpickr) package. To install it in your project, do:
 
 ```bash
 npm install flatpickr
@@ -52,6 +83,30 @@ In `resources/sass/app.scss` add:
 ```scss
 @import '~flatpickr/dist/flatpickr.css';
 ```
+
+#### Select
+
+For selecting multiple values select component uses [selectize](https://github.com/selectize/selectize.js) package. To install it in your project, do:
+
+```bash
+npm install selectize
+```
+
+In `resources/js/bootstrap.js` add:
+
+```js
+window.selectize = require('selectize');
+```
+
+In `resources/sass/app.scss` add:
+
+```scss
+@import '~selectize/dist/css/selectize.css';
+```
+
+#### Textarea
+
+Textarea can use [TinyMCE](https://www.tiny.cloud/) dependency for WYSIWYG. Right now there is no way to install it through npm, so it needs to be added manually.
 
 #### Uppy
 
