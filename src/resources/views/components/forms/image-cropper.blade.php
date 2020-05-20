@@ -4,7 +4,7 @@
             <label
                 class="az-content-label tx-11 tx-medium tx-gray-600"
                 for="{{ $name }}"
-            >{{ $name }} @if($required)<span class="text-danger">*</span>@endif</label>
+            >{{ $label ?? ucfirst(str_replace('_', ' ', $name)) }} @if($required)<span class="text-danger">*</span>@endif</label>
             <div class="custom-file">
                 <input
                     type="file"

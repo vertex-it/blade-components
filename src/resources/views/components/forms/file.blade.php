@@ -3,7 +3,7 @@
         <label
             class="{{ config('blade_components.classes.label.text') }}"
             for="{{ $name }}"
-        >{{ $name }} @if($required)<span class="text-danger">*</span>@endif</label>
+        >{{ $label ?? ucfirst(str_replace('_', ' ', $name)) }} @if($required)<span class="text-danger">*</span>@endif</label>
         <div class="{{ config('blade_components.classes.file.div') }}">
             <input
                 type="file"

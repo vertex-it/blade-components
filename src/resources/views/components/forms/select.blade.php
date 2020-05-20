@@ -3,10 +3,10 @@
         <label
             class="{{ config('blade_components.classes.label.text') }} @error($name) {{ config('blade_components.classes.label.error') }} @enderror"
             for="{{ $name }}"
-        >{{ $name }} @if($required)<span class="text-danger">*</span>@endif</label>
+        >{{ $label ?? ucfirst(str_replace('_', ' ', $name)) }}@if($required)<span class="text-danger">*</span>@endif</label>
         <select
             class="{{ $selectize ? 'selectize' : config('blade_components.classes.input.input') }}"
-            name="{{ $name . $multiple ? '[]' : '' }}"
+            name="{{ $name }}@if($multiple)[]@endif"
             id="{{ $name }}"
             @if($multiple) multiple @endif
             @if($required) required @endif

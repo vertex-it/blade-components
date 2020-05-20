@@ -1,6 +1,6 @@
 <div class="form-group row">
     <div class="col-sm-12 col-md-8 col-xl-6">
-        <label class="{{ config('blade_components.classes.label.text') }}" for="{{ $name }}">{{ ucfirst($name) }}</label>
+        <label class="{{ config('blade_components.classes.label.text') }}" for="{{ $name }}">{{ $label ?? ucfirst(str_replace('_', ' ', $name)) }}</label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text">

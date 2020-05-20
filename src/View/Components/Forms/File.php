@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 class File extends Component
 {
     public $name;
+    public $label;
     public $required;
 
     /**
@@ -14,9 +15,10 @@ class File extends Component
      *
      * @return void
      */
-    public function __construct($name, $required = null)
+    public function __construct($name, $label = null, $required = null)
     {
         $this->name = $name;
+        $this->label = $label;
         $this->required = $required;
     }
 

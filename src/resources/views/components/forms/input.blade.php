@@ -3,7 +3,7 @@
         <label
             class="{{ config('blade_components.classes.label.text') }} @error($name) {{ config('blade_components.classes.label.error') }} @enderror"
             for="{{ $name }}"
-        >{{ ucfirst($name) }} @if($required)<span class="text-danger">*</span>@endif</label>
+        >{{ $label ?? ucfirst(str_replace('_', ' ', $name)) }} @if($required)<span class="text-danger">*</span>@endif</label>
         <input
             class="{{ config('blade_components.classes.input.input') }} @error($name) {{ config('blade_components.classes.input.error') }} @enderror"
             type="{{ $type }}"

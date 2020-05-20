@@ -8,31 +8,31 @@ class Select extends Component
 {
     public $name;
     public $options;
+    public $label;
     public $values;
     public $selectize;
     public $multiple;
     public $required;
 
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct($name, $options, $values = null, $selectize = null, $multiple = null, $required = null)
+    public function __construct(
+        $name,
+        $options,
+        $label = null,
+        $values = null,
+        $selectize = null,
+        $multiple = null,
+        $required = null
+    )
     {
         $this->name = $name;
         $this->options = $options;
+        $this->label = $label;
         $this->values = $values;
         $this->selectize = $selectize;
         $this->multiple = $multiple;
         $this->required = $required;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
-     */
     public function render()
     {
         return view('blade-components::components.forms.select');

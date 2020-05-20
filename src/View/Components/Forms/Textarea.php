@@ -8,6 +8,7 @@ class Textarea extends Component
 {
     public $name;
     public $value;
+    public $label;
     public $wisywig;
     public $placeholder;
     public $required;
@@ -17,10 +18,18 @@ class Textarea extends Component
      *
      * @return void
      */
-    public function __construct($name, $value = null, $wisywig = null, $placeholder = null, $required = null)
+    public function __construct(
+        $name,
+        $value = null,
+        $label = null,
+        $wisywig = null,
+        $placeholder = null,
+        $required = null
+    )
     {
         $this->name = $name;
         $this->value = $value;
+        $this->label = $label;
         $this->wisywig = $wisywig;
         $this->placeholder = $placeholder;
         $this->required = $required;
