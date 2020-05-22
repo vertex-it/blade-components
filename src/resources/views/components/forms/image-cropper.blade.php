@@ -9,7 +9,7 @@
                 <input
                     type="file"
                     class="custom-file-input js-cropper @error($name) parsley-error @enderror"
-                    name="{{ $name }}"
+{{--                    name="{{ $name }}"--}}
                     id="{{ $name }}"
                     @if($required) required @endif
                     data-name="{{ $name }}"
@@ -27,8 +27,8 @@
         <img id="cropper-image-{{ $name }}" style="height: 400px;">
         <div class="row col-12 d-flex justify-content-center mt-3 cropper-details-{{ $name }} mb-4" data-name="{{ $name }}">
             <div class="mr-4 view-modes">
-                <button class="btn btn-light cropper-vm font-weight-bold" data-value="0">Proširite</button>
-                <button class="btn btn-light cropper-vm" data-value="1">Zadržite</button>
+                <button class="btn btn-light cropper-vm font-weight-bold" data-value="0">{{ __('Expand') }}</button>
+                <button class="btn btn-light cropper-vm" data-value="1">{{ __('Keep') }}</button>
             </div>
             <div class="aspect-ratios">
                 @if(in_array($aspectRatioX, [false, 1]) && in_array($aspectRatioY, [false, 1]))
@@ -78,37 +78,37 @@
                 <input class="form-control cropper-input-details cropper-{{ $name }}-y" type="number">
             </div>
             <div class="col-md-3 mg-t-10 mg-md-t-0">
-                <label class="az-content-{{ $name }} tx-11 tx-medium tx-gray-600">Visina (px)</label>
+                <label class="az-content-{{ $name }} tx-11 tx-medium tx-gray-600">{{ __('Height') }} (px)</label>
                 <input class="form-control cropper-input-details cropper-{{ $name }}-height" type="number">
             </div>
             <div class="col-md-3 mg-t-10 mg-md-t-0">
-                <label class="az-content-{{ $name }} tx-11 tx-medium tx-gray-600">Širina (px)</label>
+                <label class="az-content-{{ $name }} tx-11 tx-medium tx-gray-600">{{ __('Width') }} (px)</label>
                 <input class="form-control cropper-input-details cropper-{{ $name }}-width" type="number">
             </div>
         </div>
         <div class="row">
             <div class="col-12 text-center">
                 <button
-                        id="btn-crop-{{ $name }}"
-                        class="btn btn-indigo btn-crop"
-                        data-name="{{ $name }}"
+                    id="btn-crop-{{ $name }}"
+                    class="btn btn-secondary btn-crop"
+                    data-name="{{ $name }}"
                 >
-                    <i class="fa fa-cut"></i> Izrežite sliku
+                    <i class="fa fa-cut"></i>&nbsp;&nbsp;&nbsp;{{ __('Crop') }}
                 </button>
             </div>
         </div>
     </div>
     <input
         type="hidden"
-        name="{{ $name }}_cropped"
+        name="{{ $name }}"
         id="{{ $name }}_cropped"
-        value="{{ old("{$name}_cropped") }}"
+        value="{{ old("{$name}") }}"
     >
     <img
-        src="{{ old("{$name}_cropped") }}"
+        src="{{ old("{$name}") }}"
         width="500px"
         class="old_{{ $name }}_cropped mb-3"
-        @if (! old("{$name}_cropped"))
+        @if (! old("{$name}"))
             style="display: none;"
         @endif
     >
@@ -185,13 +185,13 @@
 
                 $.ajax({
                     method: 'POST',
-                    url: '{{ route('admin.images.store') }}',
+                    url: '{{ route('blade-components.images') }}',
                     data: formData,
                     processData: false,
                     contentType: false,
                     success: function (data) {
                         if (! data) {
-                            toastr.error("Dogodila se greška. Veličina izrezane slike je " + formatBytes(blob.size, 2));
+                            toastr.error('{{ __('Failure. The size of the cropped image is: ') }}' + formatBytes(blob.size, 2));
 
                             return;
                         }
@@ -207,10 +207,10 @@
                         $('.js-cropper-tools[data-name="' + name + '"]').hide();
                         $('.' + name + '_old').hide();
 
-                        toastr.success("Izrezali ste sliku");
+                        toastr.success('{{ __("Image has been cropped") }}');
                     },
                     error: function (data) {
-                        toastr.error("Dogodila se greška");
+                        toastr.error('{{ __('Cropper failed') }}');
                     }
                 });
             }, 'image/jpeg');

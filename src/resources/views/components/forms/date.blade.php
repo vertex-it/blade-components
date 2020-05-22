@@ -11,7 +11,7 @@
                 type="text"
                 name="{{ $name }}"
                 class="{{ config('blade_components.classes.input.input') }} flatpickr"
-                placeholder="{{ $placeholder ?? ucfirst($name) }}"
+                placeholder="{{ $placeholder ?? ucfirst(str_replace('_', ' ', $name)) }}"
                 id="{{ $name }}"
                 value="{{ old($name, $value) }}"
             >

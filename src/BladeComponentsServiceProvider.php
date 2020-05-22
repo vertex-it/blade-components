@@ -13,6 +13,8 @@ class BladeComponentsServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/resources/views', 'blade-components');
 
+        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+
         BladeComponentsFacade::register();
 
         if ($this->app->runningInConsole()) {

@@ -38,7 +38,7 @@
 
                     xhr = new XMLHttpRequest();
                     xhr.withCredentials = false;
-                    xhr.open('POST', "{{ route('admin.images.store') }}");
+                    xhr.open('POST', "{{ route('blade-components.images') }}");
                     xhr.setRequestHeader("X-CSRF-Token", "{{ csrf_token() }}");
 
                     xhr.onload = function() {
