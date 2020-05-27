@@ -9,7 +9,6 @@
                 <input
                     type="file"
                     class="custom-file-input js-cropper @error($name) parsley-error @enderror"
-{{--                    name="{{ $name }}"--}}
                     id="{{ $name }}"
                     @if($required) required @endif
                     data-name="{{ $name }}"
@@ -100,9 +99,11 @@
     </div>
     <input
         type="hidden"
-        name="{{ $name }}"
         id="{{ $name }}_cropped"
-        value="{{ old("{$name}") }}"
+        @if(old($name))
+            name="{{ $name }}"
+            value="{{ old($name) }}"
+        @endif
     >
     <img
         src="{{ old("{$name}") }}"
@@ -113,7 +114,7 @@
         @endif
     >
     <div class="old_{{ $name }}_value">
-        @if($value)
+        @if($value && ! old($name))
             <img
                 src="{{ $value }}"
                 width="500px"
@@ -198,7 +199,10 @@
 
                         let image = data;
 
-                        $('#' + name + '_cropped').val(image);
+                        $('#' + name + '_cropped')
+                            .attr('name', name)
+                            .val(image);
+
                         $('.old_' + name + '_cropped').attr('src', image).show();
 
                         $('#cropper-image-' + name).cropper('destroy');
