@@ -10,7 +10,7 @@
             <input
                 type="text"
                 name="{{ $name }}"
-                class="{{ config('blade_components.classes.input.input') }} flatpickr"
+                class="{{ config('blade_components.classes.input.input') }} flatpickr-{{ $name }}"
                 placeholder="{{ $placeholder ?? ucfirst(str_replace('_', ' ', $name)) }}"
                 id="{{ $name }}"
                 value="{{ old($name, $value) }}"
@@ -37,6 +37,6 @@
             options.altFormat = "F j, Y";
         @endif
 
-        flatpickr('.flatpickr', options);
+        flatpickr('.flatpickr-{{ $name }}', options);
     </script>
 @endpush

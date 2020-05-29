@@ -22,7 +22,7 @@ class BladeComponentsImageController extends Controller
         $image = $this->fileService->upload(
             $request->image,
             'temp',
-            $request->name
+            $request->name ?? ''
         );
 
         return response()->json(

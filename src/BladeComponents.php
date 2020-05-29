@@ -13,6 +13,7 @@ use VertexIt\BladeComponents\View\Components\Forms\MultiInput;
 use VertexIt\BladeComponents\View\Components\Forms\Radio;
 use VertexIt\BladeComponents\View\Components\Forms\Select;
 use VertexIt\BladeComponents\View\Components\Forms\Textarea;
+use VertexIt\BladeComponents\View\Components\Forms\Time;
 use VertexIt\BladeComponents\View\Components\Forms\Uppy;
 use Illuminate\Support\Facades\Blade;
 
@@ -31,6 +32,7 @@ class BladeComponents
         Blade::component('forms.radio', Radio::class);
         Blade::component('forms.select', Select::class);
         Blade::component('forms.textarea', Textarea::class);
+        Blade::component('forms.time', Time::class);
         Blade::component('forms.uppy', Uppy::class);
     }
 }
