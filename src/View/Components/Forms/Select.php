@@ -51,6 +51,10 @@ class Select extends Component
                 || in_array($option, $this->values ?? []);
         }
 
-        return $option === old($this->name);
+        if (old($this->name)) {
+            return $option == old($this->name);
+        }
+
+        return  $option == $this->values;
     }
 }

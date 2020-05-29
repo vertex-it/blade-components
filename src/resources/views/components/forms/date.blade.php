@@ -24,6 +24,7 @@
         let options = {
             altInput: true,
             weekNumbers: true,
+            allowInput: true,
         };
 
         @if($time)

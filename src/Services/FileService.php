@@ -3,6 +3,7 @@
 namespace VertexIt\BladeComponents\Services;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class FileService
 {
@@ -69,7 +70,7 @@ class FileService
      * @param  bool  $public - Append public prefix to directory
      * @return string|array - Name of the file/files
      */
-    private function processUpload($file, $path, $name, $public)
+    protected function processUpload($file, $path, $name, $public)
     {
         if ($public === true) {
             $path = "public/$path";
@@ -90,7 +91,7 @@ class FileService
      * @param  string  $name
      * @return string
      */
-    private function processSingleFileUpload($path, $file, $name)
+    protected function processSingleFileUpload($path, $file, $name)
     {
         return $file->storeAs($path, $this->getFileNameWithExtension($file, $name));
     }
@@ -101,7 +102,7 @@ class FileService
      * @param  string  $name
      * @return array - Names of the uploaded files
      */
-    private function processMultipleFileUploads($path, $files, $name) {
+    protected function processMultipleFileUploads($path, $files, $name) {
         $uploadedFiles = [];
 
         foreach ($files as $file) {
@@ -117,7 +118,7 @@ class FileService
      * @param  string  $path
      * @return void
      */
-    private function makeDirectory($path)
+    protected function makeDirectory($path)
     {
         if (! Storage::exists($path)) {
             Storage::makeDirectory($path);
@@ -129,11 +130,15 @@ class FileService
      * @param  string  $name
      * @return string - File name with extension
      */
-    private function getFileNameWithExtension($file, $name) {
+    protected function getFileNameWithExtension($file, $name) {
         if ($name === '') {
             return $file->hashName();
         }
 
-        return $name . '_' . $file->hashName();
+        $nameAndExtension = explode('.', $name);
+
+        $extension = explode('/', $file->getMimeType())[1];
+
+        return $nameAndExtension[0].'.'.$extension;
     }
 }

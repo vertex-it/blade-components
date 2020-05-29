@@ -10,18 +10,20 @@ class Uppy extends Component
     public $note;
     public $key;
     public $route;
+    public $images;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $route, $note = null)
+    public function __construct($name, $route = null, $note, $images = null)
     {
         $this->name = $name;
         $this->note = $note;
         $this->key = uniqid();
         $this->route = $route;
+        $this->images = $images;
     }
 
     /**

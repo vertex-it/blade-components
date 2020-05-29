@@ -22,7 +22,7 @@
             @enderror
         </div>
     </div>
-    <div class="js-cropper-tools" data-name="{{ $name }}" style="display: none;">
+    <div class="js-cropper-tools mb-3" data-name="{{ $name }}" style="display: none;">
         <img id="cropper-image-{{ $name }}" style="height: 400px;">
         <div class="row col-12 d-flex justify-content-center mt-3 cropper-details-{{ $name }} mb-4" data-name="{{ $name }}">
             <div class="mr-4 view-modes">
@@ -107,18 +107,17 @@
     >
     <img
         src="{{ old("{$name}") }}"
-        width="500px"
-        class="old_{{ $name }}_cropped mb-3"
+        class="old_{{ $name }}_cropped mb-3 img-thumbnail"
         @if (! old("{$name}"))
-            style="display: none;"
+            style="display: none; max-height: 300px; max-width: 500px;"
         @endif
     >
     <div class="old_{{ $name }}_value">
         @if($value && ! old($name))
             <img
                 src="{{ $value }}"
-                width="500px"
-                class="mb-3"
+                style="max-height: 300px; max-width: 500px;"
+                class="mb-3 img-thumbnail"
             >
         @endif
     </div>

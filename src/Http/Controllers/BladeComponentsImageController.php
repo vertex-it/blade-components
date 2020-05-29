@@ -19,7 +19,11 @@ class BladeComponentsImageController extends Controller
 
     public function store(Request $request)
     {
-        $image = $this->fileService->upload($request->image, 'temp');
+        $image = $this->fileService->upload(
+            $request->image,
+            'temp',
+            $request->name
+        );
 
         return response()->json(
             config('app.url') . '/' . str_replace('public', 'storage', $image)
