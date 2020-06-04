@@ -21,22 +21,19 @@
 
 @push('scripts')
     <script>
-        let options = {
+        flatpickr('.flatpickr-{{ $name }}', {
             altInput: true,
             weekNumbers: true,
             allowInput: true,
-        };
-
-        @if($time)
-            options.enableTime = true;
-            options.dateFormat = "Y-m-d H:i";
-            options.altFormat = "F j, Y - H:i";
-            options.time_24hr = true;
-        @else
-            options.dateFormat = "Y-m-d";
-            options.altFormat = "F j, Y";
-        @endif
-
-        flatpickr('.flatpickr-{{ $name }}', options);
+            @if($time)
+                enableTime: true,
+                dateFormat: "Y-m-d H:i",
+                altFormat: "F j, Y - H:i",
+                time_24hr: true,
+            @else
+                dateFormat: "Y-m-d",
+                altFormat: "F j, Y",
+            @endif
+        });
     </script>
 @endpush
