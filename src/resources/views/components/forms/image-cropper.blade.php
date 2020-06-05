@@ -10,7 +10,7 @@
                     type="file"
                     class="custom-file-input js-cropper @error($name) parsley-error @enderror"
                     id="{{ $name }}"
-                    @if($required) required @endif
+                    @if($required && ! old($name)) required @endif
                     data-name="{{ $name }}"
                     data-aspect-ratio-x="{{ $aspectRatioX ?? 0 }}"
                     data-aspect-ratio-y="{{ $aspectRatioY ?? 0 }}"
