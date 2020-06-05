@@ -4,7 +4,7 @@
         <input
             type="text"
             name="{{ $name }}"
-            class="{{ config('blade_components.classes.input.input') }} flatpickr-time"
+            class="{{ config('blade_components.classes.input.input') }} timepicker"
             placeholder="{{ $placeholder ?? ucfirst(str_replace('_', ' ', $name)) }}"
             id="{{ $name }}"
             value="{{ old($name, $value) }}"
@@ -14,16 +14,13 @@
 
 @push('scripts')
     <script>
-        flatpickr('.flatpickr-time', {
-            altInput: true,
-            weekNumbers: true,
-            allowInput: true,
-            enableTime: true,
-            dateFormat: "H:i",
-            altFormat: "H:i",
-            time_24hr: true,
-            noCalendar: true,
-            defaultDate: "{{ $defaultTime ?? null }}"
-        });
+        $('.timepicker').timepicker({
+            timeFormat: 'HH:mm',
+            interval: '{{ $interval ?? '30' }}',
+            startTime: '{{ $defaultTime ?? '00:00' }}',
+            dynamic: true,
+            dropdown: true,
+            scrollbar: true,
+        }).attr("autocomplete", 'off');
     </script>
 @endpush

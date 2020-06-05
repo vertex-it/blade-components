@@ -108,6 +108,26 @@ In `resources/sass/app.scss` add:
 
 Textarea can use [TinyMCE](https://www.tiny.cloud/) dependency for WYSIWYG. Right now there is no way to install it through npm, so it needs to be added manually.
 
+#### Timepicker
+
+Time uses [jquery timepicker](https://timepicker.co/) package. To install it in your project, do:
+
+```bash
+npm install jquery-timepicker
+```
+
+In `resources/js/bootstrap.js` add:
+
+```bash
+window.timepicker = require('jquery-timepicker/jquery.timepicker');
+```
+
+In `resources/sass/app.scss` add:
+
+```scss
+@import '~jquery-timepicker/jquery.timepicker.css';
+```
+
 #### Uppy
 
 Install npm package:

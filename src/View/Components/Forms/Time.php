@@ -11,14 +11,23 @@ class Time extends Component
     public $label;
     public $placeholder;
     public $defaultTime;
+    public $interval;
 
-    public function __construct($name, $value = null, $label = null, $placeholder = null, $defaultTime = null)
+    public function __construct(
+        $name,
+        $value = null,
+        $label = null,
+        $placeholder = null,
+        $defaultTime = null,
+        $interval = null
+    )
     {
         $this->name = $name;
         $this->value = $value;
         $this->label = $label;
         $this->placeholder = $placeholder;
         $this->defaultTime = $defaultTime;
+        $this->interval = $interval;
     }
 
     public function render()
