@@ -1,11 +1,4 @@
-# Very short description of the package
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/vertex-it/blade-components.svg?style=flat-square)](https://packagist.org/packages/vertex-it/blade-components)
-[![Build Status](https://img.shields.io/travis/vertex-it/blade-components/master.svg?style=flat-square)](https://travis-ci.org/vertex-it/blade-components)
-[![Quality Score](https://img.shields.io/scrutinizer/g/vertex-it/blade-components.svg?style=flat-square)](https://scrutinizer-ci.com/g/vertex-it/blade-components)
-[![Total Downloads](https://img.shields.io/packagist/dt/vertex-it/blade-components.svg?style=flat-square)](https://packagist.org/packages/vertex-it/blade-components)
-
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+# Vertex IT Blade Components
 
 ## Installation
 
@@ -14,8 +7,8 @@ In composer.json add:
 ```json
 "repositories": [
     {
-        "type": "path",
-        "url": "../path/to/blade-components"
+        "type": "vcs",
+        "url": "https://github.com/vertex-it/blade-components"
     }
 ]
 ```
@@ -25,6 +18,8 @@ Then install the package via composer:
 ```bash
 composer require vertex-it/blade-components
 ```
+
+You will be required to generate a token. It is easy, just follow the steps provided in the composer message.
 
 ## Usage
 
@@ -106,7 +101,7 @@ In `resources/sass/app.scss` add:
 
 #### Textarea
 
-Textarea can use [TinyMCE](https://www.tiny.cloud/) dependency for WYSIWYG. 
+Textarea can use [TinyMCE](https://www.tiny.cloud/) dependency for WYSIWYG.
 
 To install TinyMCE, do:
 
