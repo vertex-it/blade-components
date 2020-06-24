@@ -106,7 +106,49 @@ In `resources/sass/app.scss` add:
 
 #### Textarea
 
-Textarea can use [TinyMCE](https://www.tiny.cloud/) dependency for WYSIWYG. Right now there is no way to install it through npm, so it needs to be added manually.
+Textarea can use [TinyMCE](https://www.tiny.cloud/) dependency for WYSIWYG. 
+
+To install TinyMCE, do:
+
+```bash
+npm install tinymce
+```
+
+In `resources/js/bootstrap.js` add:
+
+```js
+window.tinymce = require('tinymce/tinymce.js');
+```
+
+In `resources/js/app.js` add the plugins you want to use, the default ones are:
+
+```js
+require('tinymce/themes/silver/theme.js');
+require('tinymce/plugins/autoresize/plugin.js');
+require('tinymce/plugins/advlist/plugin.js');
+require('tinymce/plugins/hr/plugin.js');
+require('tinymce/plugins/charmap/plugin.js');
+require('tinymce/plugins/fullscreen/plugin.js');
+require('tinymce/plugins/insertdatetime/plugin.js');
+require('tinymce/plugins/image/plugin.js');
+require('tinymce/plugins/link/plugin.js');
+require('tinymce/plugins/preview/plugin.js');
+require('tinymce/plugins/searchreplace/plugin.js');
+require('tinymce/plugins/visualblocks/plugin.js');
+require('tinymce/plugins/wordcount/plugin.js');
+require('tinymce/plugins/help/plugin.js');
+require('tinymce/plugins/lists/plugin.js');
+require('tinymce/plugins/code/plugin.js');
+```
+
+In `webpack.mix.js` add:
+
+```js
+mix.copyDirectory('node_modules/tinymce/icons', 'public/js/icons');
+mix.copyDirectory('node_modules/tinymce/plugins', 'public/js/plugins');
+mix.copyDirectory('node_modules/tinymce/skins', 'public/js/skins');
+mix.copyDirectory('node_modules/tinymce/themes', 'public/js/themes');
+```
 
 #### Timepicker
 

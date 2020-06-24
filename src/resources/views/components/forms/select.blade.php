@@ -5,7 +5,7 @@
             for="{{ $name }}"
         >{{ $label ?? ucfirst(str_replace('_', ' ', $name)) }}@if($required)<span class="text-danger">*</span>@endif</label>
         <select
-            class="{{ $selectize ? 'selectize' : config('blade_components.classes.input.input') }}"
+            class="{{ $selectize ? "selectize-{$name}" : config('blade_components.classes.input.input') }}"
             name="{{ $name }}@if($multiple)[]@endif"
             id="{{ $name }}"
             @if($multiple) multiple @endif
@@ -28,7 +28,7 @@
 
 @push('scripts')
     <script>
-        $('.selectize').selectize({
+        $('.selectize-{{ $name }}').selectize({
             plugins: ['remove_button'],
             allowEmptyOption: false,
         });
