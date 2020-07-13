@@ -2,191 +2,222 @@
 
 ## Installation
 
+### Composer
+
 In composer.json add:
 
 ```json
-"repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/vertex-it/blade-components"
-    }
-]
+    "repositories": [
+        {
+            "type": "vcs", // "path",
+            "url": "https://github.com/vertex-it/blade-components" // "../path/to/blade-components"
+        }
+    ]
 ```
 
 Then install the package via composer:
 
 ```bash
-composer require vertex-it/blade-components
+    composer require vertex-it/blade-components
 ```
 
-You will be required to generate a token. It is easy, just follow the steps provided in the composer message.
-
-## Usage
+If you are installing blade-components for the first time you will be asked to generate a token, which is really easy, just follow the steps provided in the composer message.
 
 ### NPM Dependencies
 
-#### Image Cropper
-
-Image cropper component uses [cropper](https://github.com/fengyuanchen/cropperjs) package. To install it in your project, do:
-
 ```bash
-npm install cropper
+    # Image Cropper
+    npm install jquery cropperjs jquery-cropper
+
+    # Date
+    npm install flatpickr
+
+    # Select
+    npm install selectize
+
+    # Textarea
+    npm install tinymce
+
+    # Timepicker
+    npm install timepicker
+
+    # Uppy
+    npm install uppy
+
+    # Bootstrap Switch
+    npm install bootstrap4-toggle
+
+    # Or if you want to install all the dependencies use this command
+    npm install jquery cropperjs jquery-cropper flatpickr selectize tinymce timepicker uppy bootstrap4-toggle
+
 ```
 
-In `resources/js/bootstrap.js` add:
+If you need to use tinymce rich text editor you will need to add the following to your your `webpack.mix.js` file:
 
 ```js
-window.cropper = require('cropper');
+    // Tinymce resources
+    mix.copyDirectory('node_modules/tinymce/icons', 'public/js/icons');
+    mix.copyDirectory('node_modules/tinymce/plugins', 'public/js/plugins');
+    mix.copyDirectory('node_modules/tinymce/skins', 'public/js/skins');
+    mix.copyDirectory('node_modules/tinymce/themes', 'public/js/themes');
 ```
 
-In `resources/sass/app.scss` add:
+<!-- TODO: Document blade-components.js and npm run dev -->
 
-```scss
-@import '~cropper/dist/cropper.min.css';
+## Usage
+
+<!-- TODO: Add blade components mention and url to the docs -->
+
+### Form component
+
+```blade
+    <x-form
+        action="absolute/path/to/articles"
+        method="POST"
+        buttonText="Submit"
+        multipart
+    >
+```
+
+### Input components
+
+#### Common attributes
+| Component attribute | HTML equivalent | Required | Description |
+|:-:|:-:|:-:|:-:|
+| name | name | Yes | Name attribute has the same value as passed to the x-component. <br> Only exception are the components which can accept multiple values: **checkbox** and **select**.  |
+| label | label | No | If not passed, label will be created from formatted name attribute value. |
+| placeholder | placeholder | No | If not passed, placeholder will be created from the placeholder_prefix (translation key) and generated label. <br> Some of the components do not support **placeholder** attribute: **checkbox**, **cropper**, **file**, **radio**, **toggle** and **uppy**. |
+| value | value | No | If passed x-component will use it as value for the according input.<br> If there is a validation error, x-component will prefer old() value over originally passed value!
+| required | required | No | If passed, it will be added to the inputs which have native required support. <br> All of the components with the required attribute will contain red asterisk as a sign of the required field in the label. |
+| comment | - | No | Accepts text or HTML. Output is displayed below component as a small block of text (HTML). |
+| inline | - | No |  If passed, components will use bootstrap inline configuration (classes, elements, etc.). <br> Please note that if you are using **inline** you should wrap those components in a bootstrap row! <br> Some of them do not support **inline** attribute: **checkbox**, **cropper**, **radio**, **textarea** and **uppy**. |
+
+#### Checkbox <x-inputs.checkbox ... />
+```blade
+    <x-inputs.checkbox
+        name="seasons"
+        label="Custom seasons label"
+        :value="['spring']"
+        required
+        comment="You can use <strong>comment</strong> attribute with all of the components and also you can add as much custom attributes as you want to all of the components! <br> Please note that already injected (predefined) attributes will not be available in the custom attributes array and that custom attributes should be named according to the HTML conventions!"
+        :options="['winter', 'spring', 'summer', 'autumn']"
+        {{-- These are custom attributes which will be apended to the input --}}
+        custom_attribute_one="customAttributeOneValue"
+        custom_attribute_two="customAttributeTwoValue"
+        custom_attribute_n="customAttributeNValue"
+    />
+```
+
+Checkbox component accepts **:options** array as a set of keys and labels. If keys are not specified then snake cased values will be used. The **:value** attribute accepts an array of keys which will be used to determine if the option is checked.
+
+Please note that **checkbox** component is created as an alternative to the **select** component. If you want to use it as input representation of the boolean value then you should use **toggle** component instead.
+
+#### Date <x-inputs.cropper ... />
+```blade
+<x-inputs.cropper
+    name="cover"
+    value="path/to/the/image"
+    :aspectRatio="[16, 9]"
+/>
+```
+Cropper component accepts optional **:aspectRatio** array. The optional **value** attribute should contain path to the image.
+
+#### Date <x-inputs.date ... />
+```blade
+
+```
+
+#### File <x-inputs.file ... />
+```blade
+
+```
+
+#### Input <x-inputs.input ... />
+```blade
+
+```
+
+#### Radio <x-inputs.radio ... />
+```blade
+
+```
+
+#### Select <x-inputs.select ... />
+```blade
+
+```
+
+#### Textarea <x-inputs.textarea ... />
+```blade
+
+```
+
+#### Time <x-inputs.time ... />
+```blade
+
+```
+
+#### Toggle <x-inputs.toggle ... />
+```blade
+
+```
+
+#### Uppy <x-inputs.uppy ... />
+```blade
+
+```
+
+## Inline input components
+
+## Multiple input components
+
+#### Cropper
+
+Based on the [cropper](https://github.com/fengyuanchen/cropperjs) and the [jquery-cropper](https://github.com/fengyuanchen/jquery-cropper).
+
+Use example:
+```php
+    <x-forms.cropper
+        name="attrName"
+        value="{{ $model->attrName }}"
+        label="Attr name"
+        required
+        :aspectRatio="[0, 0]"
+    />
 ```
 
 #### Date
 
-Date component uses [flatpickr](https://github.com/flatpickr/flatpickr) package. To install it in your project, do:
+Based on the [flatpickr](https://github.com/flatpickr/flatpickr).
 
-```bash
-npm install flatpickr
-```
-
-In `resources/js/bootstrap.js` add:
-
-```js
-window.flatpickr = require('flatpickr');
-```
-
-If you want to localize it to, for example Serbian, also add:
-
-```js
-window.flatpickrSerbian = require("flatpickr/dist/l10n/sr.js").default.sr;
-flatpickr.localize(flatpickrSerbian);
-flatpickr.l10ns.default.firstDayOfWeek = 1;
-```
-
-In `resources/js/app.js` add:
-
-```js
-require('flatpickr');
-```
-
-In `resources/sass/app.scss` add:
-
-```scss
-@import '~flatpickr/dist/flatpickr.css';
+Use example:
+```php
+    <x-forms.date
+        name="attrName"
+        value="{{ $model->attrName }}"
+        label="Attr name"
+        // required
+        // time
+        // placeholder
+        autofocus
+    />
 ```
 
 #### Select
 
-For selecting multiple values select component uses [selectize](https://github.com/selectize/selectize.js) package. To install it in your project, do:
-
-```bash
-npm install selectize
-```
-
-In `resources/js/bootstrap.js` add:
-
-```js
-window.selectize = require('selectize');
-```
-
-In `resources/sass/app.scss` add:
-
-```scss
-@import '~selectize/dist/css/selectize.css';
-```
+Based on the [selectize](https://github.com/selectize/selectize.js).
 
 #### Textarea
 
-Textarea can use [TinyMCE](https://www.tiny.cloud/) dependency for WYSIWYG.
-
-To install TinyMCE, do:
-
-```bash
-npm install tinymce
-```
-
-In `resources/js/bootstrap.js` add:
-
-```js
-window.tinymce = require('tinymce/tinymce.js');
-```
-
-In `resources/js/app.js` add the plugins you want to use, the default ones are:
-
-```js
-require('tinymce/themes/silver/theme.js');
-require('tinymce/plugins/autoresize/plugin.js');
-require('tinymce/plugins/advlist/plugin.js');
-require('tinymce/plugins/hr/plugin.js');
-require('tinymce/plugins/charmap/plugin.js');
-require('tinymce/plugins/fullscreen/plugin.js');
-require('tinymce/plugins/insertdatetime/plugin.js');
-require('tinymce/plugins/image/plugin.js');
-require('tinymce/plugins/link/plugin.js');
-require('tinymce/plugins/preview/plugin.js');
-require('tinymce/plugins/searchreplace/plugin.js');
-require('tinymce/plugins/visualblocks/plugin.js');
-require('tinymce/plugins/wordcount/plugin.js');
-require('tinymce/plugins/help/plugin.js');
-require('tinymce/plugins/lists/plugin.js');
-require('tinymce/plugins/code/plugin.js');
-```
-
-In `webpack.mix.js` add:
-
-```js
-mix.copyDirectory('node_modules/tinymce/icons', 'public/js/icons');
-mix.copyDirectory('node_modules/tinymce/plugins', 'public/js/plugins');
-mix.copyDirectory('node_modules/tinymce/skins', 'public/js/skins');
-mix.copyDirectory('node_modules/tinymce/themes', 'public/js/themes');
-```
+Based on the [TinyMCE](https://www.tiny.cloud/).
 
 #### Timepicker
 
-Time uses [jquery timepicker](https://timepicker.co/) package. To install it in your project, do:
-
-```bash
-npm install jquery-timepicker
-```
-
-In `resources/js/bootstrap.js` add:
-
-```bash
-window.timepicker = require('jquery-timepicker/jquery.timepicker');
-```
-
-In `resources/sass/app.scss` add:
-
-```scss
-@import '~jquery-timepicker/jquery.timepicker.css';
-```
+Based on the [jquery timepicker](https://timepicker.co/).
 
 #### Uppy
 
-Install npm package:
-
-```bash
-npm install uppy
-```
-
-In `resources/js/bootstrap.js` add:
-
-```js
-window.Uppy = require('@uppy/core');
-window.XHRUpload = require('@uppy/xhr-upload');
-window.Dashboard = require('@uppy/dashboard');
-```
-
-In `resources/js/app.js` add:
-
-```js
-require('@uppy/core/dist/style.css');
-require('@uppy/dashboard/dist/style.css');
-```
+Based on the [Uppy](https://github.com/transloadit/uppy).
 
 ### Testing
 

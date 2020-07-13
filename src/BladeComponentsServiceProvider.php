@@ -1,6 +1,6 @@
 <?php
 
-namespace VertexIt\BladeComponents;
+namespace VertexIT\BladeComponents;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -15,16 +15,22 @@ class BladeComponentsServiceProvider extends ServiceProvider
 
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
 
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang/', 'blade-components');
+
         BladeComponentsFacade::register();
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/blade_components.php' => config_path('blade_components.php'),
-            ], 'config');
+            ], 'blade-components-config');
 
             $this->publishes([
                 __DIR__ . '/resources/views' => resource_path('views/vendor/blade-components'),
-            ], 'views');
+            ], 'blade-components-views');
+
+            $this->publishes([
+                __DIR__ . '/resources/js/bootstrap.js' => resource_path('js/blade-components-bootstrap.js'),
+            ], 'blade-components-bootstrap-js');
         }
     }
 

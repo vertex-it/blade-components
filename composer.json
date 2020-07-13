@@ -21,20 +21,21 @@
         }
     ],
     "require": {
-        "php": "^7.3"
+        "php": "^7.3",
+        "illuminate/view": "^7.17"
     },
     "require-dev": {
-        "orchestra/testbench": "^4.0",
-        "phpunit/phpunit": "^8.0"
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
-            "VertexIt\\BladeComponents\\": "src"
+            "VertexIT\\BladeComponents\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VertexIt\\BladeComponents\\Tests\\": "tests"
+            "VertexIT\\BladeComponents\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -48,10 +49,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VertexIt\\BladeComponents\\BladeComponentsServiceProvider"
+                "VertexIT\\BladeComponents\\BladeComponentsServiceProvider"
             ],
             "aliases": {
-                "BladeComponents": "VertexIt\\BladeComponents\\BladeComponentsFacade"
+                "BladeComponents": "VertexIT\\BladeComponents\\BladeComponentsFacade"
             }
         }
     }

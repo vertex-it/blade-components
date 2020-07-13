@@ -1,11 +1,11 @@
 <?php
 
-namespace VertexIt\BladeComponents;
+namespace VertexIT\BladeComponents;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \VertexIt\BladeComponents\Skeleton\SkeletonClass
+ * @see \VertexIT\BladeComponents\Skeleton\SkeletonClass
  */
 class BladeComponentsFacade extends Facade
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace VertexIt\BladeComponents\Tests;
+namespace VertexIT\BladeComponents\Tests;
 
 use Orchestra\Testbench\TestCase;
-use VertexIt\BladeComponents\BladeComponentsServiceProvider;
+use VertexIT\BladeComponents\BladeComponentsServiceProvider;
 
 class ExampleTest extends TestCase
 {
@@ -12,7 +12,7 @@ class ExampleTest extends TestCase
     {
         return [BladeComponentsServiceProvider::class];
     }
-    
+
     /** @test */
     public function true_is_true()
     {

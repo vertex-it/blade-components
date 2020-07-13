@@ -1,6 +1,6 @@
 <?php
 
-namespace VertexIt\BladeComponents\Services;
+namespace VertexIT\BladeComponents\Services;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;

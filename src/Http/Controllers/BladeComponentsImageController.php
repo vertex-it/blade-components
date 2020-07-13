@@ -1,9 +1,9 @@
 <?php
 
-namespace VertexIt\BladeComponents\Http\Controllers;
+namespace VertexIT\BladeComponents\Http\Controllers;
 
 use Illuminate\Http\Request;
-use VertexIt\BladeComponents\Services\FileService;
+use VertexIT\BladeComponents\Services\FileService;
 
 class BladeComponentsImageController extends Controller
 {
