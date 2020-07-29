@@ -7,7 +7,7 @@
         name="{{ $name }}"
         rows="7"
         placeholder="{{ $getPlaceholder() }}"
-        {{ $outputRequired() }}
+        {{ ! $richText ? $outputRequired() : '' }}
         {{ $attributes }}
     >{{
         old($name, $value)

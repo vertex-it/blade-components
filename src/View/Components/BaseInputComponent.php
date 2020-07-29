@@ -14,9 +14,6 @@ abstract class BaseInputComponent extends Component
     public $comment;
     public $inline;
 
-    /**
-     * Class constructor.
-     */
     public function __construct(
         $name,
         $label = null,
@@ -57,6 +54,6 @@ abstract class BaseInputComponent extends Component
 
     public function outputRequired()
     {
-        $this->required ? ' required ' : '';
+        return $this->required ? ' required ' : '';
     }
 }

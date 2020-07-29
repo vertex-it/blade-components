@@ -11,11 +11,6 @@ class Form extends Component
     public $multipart;
     public $buttonText;
 
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
     public function __construct($action, $method = null, $multipart = null, $buttonText = null)
     {
         $this->action = $action;
@@ -24,11 +19,6 @@ class Form extends Component
         $this->buttonText = $buttonText;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
-     */
     public function render()
     {
         return view('blade-components::components.form');
