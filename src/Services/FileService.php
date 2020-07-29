@@ -131,14 +131,8 @@ class FileService
      * @return string - File name with extension
      */
     protected function getFileNameWithExtension($file, $name) {
-        if ($name === '') {
-            return $file->hashName();
-        }
-
-        $nameAndExtension = explode('.', $name);
-
-        $extension = explode('/', $file->getMimeType())[1];
-
-        return $nameAndExtension[0].'.'.$extension;
+        return $name === ''
+            ? $file->hashName()
+            : $name;
     }
 }
