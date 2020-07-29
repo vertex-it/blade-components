@@ -4,6 +4,7 @@ namespace VertexIT\BladeComponents;
 
 use Illuminate\Support\Facades\Blade;
 use VertexIT\BladeComponents\View\Components\Form;
+use VertexIT\BladeComponents\View\Components\Breadcrumb;
 use VertexIT\BladeComponents\View\Components\Inputs\Date;
 use VertexIT\BladeComponents\View\Components\Inputs\File;
 use VertexIT\BladeComponents\View\Components\Inputs\Time;
@@ -22,6 +23,7 @@ class BladeComponents
     public function register()
     {
         Blade::component('form', Form::class);
+        Blade::component('breadcrumb', Breadcrumb::class);
 
         Blade::component('inputs.checkbox', Checkbox::class);
         Blade::component('inputs.cropper', Cropper::class);

@@ -52,17 +52,32 @@ If you are installing blade-components for the first time you will be asked to g
 
 ```
 
-If you need to use tinymce rich text editor you will need to add the following to your your `webpack.mix.js` file:
-
+To start using blade components you will need to add the following to your webpack.mix.js:
 ```js
+    mix.js('resources/js/blade-components-bootstrap.js', 'public/js');
+
+    // ...
+
+    mix.styles([
+        //... css resources
+    ]).scripts([
+        'public/js/blade-components-bootstrap.js',
+        // ... all other js resources
+    ]);
+
     // Tinymce resources
+    // If you need to use tinymce rich text editor you will need to add the following
     mix.copyDirectory('node_modules/tinymce/icons', 'public/js/icons');
     mix.copyDirectory('node_modules/tinymce/plugins', 'public/js/plugins');
     mix.copyDirectory('node_modules/tinymce/skins', 'public/js/skins');
     mix.copyDirectory('node_modules/tinymce/themes', 'public/js/themes');
 ```
 
-<!-- TODO: Document blade-components.js and npm run dev -->
+Finally run to get compiled frontend resources and start using blade components:
+```bash
+    npm run dev
+    // npm run prod if you are in production
+```
 
 ## Usage
 
@@ -170,6 +185,9 @@ Cropper component accepts optional **:aspectRatio** array. The optional **value*
 ## Inline input components
 
 ## Multiple input components
+
+
+<!-- FIXME: Remove unnecessary documentation below -->
 
 #### Cropper
 
