@@ -88,7 +88,19 @@
                 {
                     id: 'name',
                     name: 'File name',
-                    placeholder: 'Edit file name',
+                    render ({ value, onChange, fieldCSSClasses }, h) {
+                        const point = value.lastIndexOf('.')
+                        const name = value.slice(0, point)
+                        const ext = value.slice(point + 1)
+                        return h('input', {
+                            class: fieldCSSClasses.text,
+                            type: 'text',
+                            value: name,
+                            placeholder: '{{ __("Edit file name") }}',
+                            onChange: (event) => onChange(event.target.value + '.' + ext),
+                            'data-uppy-super-focusable': true
+                        })
+                    }
                 },
             ],
         })

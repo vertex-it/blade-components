@@ -7,18 +7,18 @@
 In composer.json add:
 
 ```json
-    "repositories": [
-        {
-            "type": "vcs", // "path",
-            "url": "https://github.com/vertex-it/blade-components" // "../path/to/blade-components"
-        }
-    ]
+"repositories": [
+    {
+        "type": "vcs", # "path",
+        "url": "https://github.com/vertex-it/blade-components" # "../path/to/blade-components"
+    }
+]
 ```
 
 Then install the package via composer:
 
 ```bash
-    composer require vertex-it/blade-components
+composer require vertex-it/blade-components
 ```
 
 If you are installing blade-components for the first time you will be asked to generate a token, which is really easy, just follow the steps provided in the composer message.
@@ -26,51 +26,51 @@ If you are installing blade-components for the first time you will be asked to g
 ### NPM Dependencies
 
 ```bash
-    # Image Cropper
-    npm install jquery cropperjs jquery-cropper
+# Image Cropper
+npm install jquery cropperjs jquery-cropper
 
-    # Date
-    npm install flatpickr
+# Date
+npm install flatpickr
 
-    # Select
-    npm install selectize
+# Select
+npm install selectize
 
-    # Textarea
-    npm install tinymce
+# Textarea
+npm install tinymce
 
-    # Timepicker
-    npm install timepicker
+# Timepicker
+npm install timepicker
 
-    # Uppy
-    npm install uppy
+# Uppy
+npm install uppy
 
-    # Bootstrap Switch
-    npm install bootstrap4-toggle
+# Bootstrap Switch
+npm install bootstrap4-toggle
 
-    # Or if you want to install all the dependencies use this command
-    npm install jquery cropperjs jquery-cropper flatpickr selectize tinymce timepicker uppy bootstrap4-toggle
+# Or if you want to install all the dependencies use this command
+npm install jquery cropperjs jquery-cropper flatpickr selectize tinymce timepicker uppy bootstrap4-toggle
 
 ```
 
 To start using blade components you will need to add the following to your webpack.mix.js:
 ```js
-    mix.js('resources/js/blade-components-bootstrap.js', 'public/js');
+mix.js('resources/js/blade-components-bootstrap.js', 'public/js');
 
-    // ...
+// ...
 
-    mix.styles([
-        //... css resources
-    ]).scripts([
-        'public/js/blade-components-bootstrap.js',
-        // ... all other js resources
-    ]);
+mix.styles([
+    //... css resources
+]).scripts([
+    'public/js/blade-components-bootstrap.js',
+    // ... all other js resources
+]);
 
-    // Tinymce resources
-    // If you need to use tinymce rich text editor you will need to add the following
-    mix.copyDirectory('node_modules/tinymce/icons', 'public/js/icons');
-    mix.copyDirectory('node_modules/tinymce/plugins', 'public/js/plugins');
-    mix.copyDirectory('node_modules/tinymce/skins', 'public/js/skins');
-    mix.copyDirectory('node_modules/tinymce/themes', 'public/js/themes');
+// Tinymce resources
+// If you need to use tinymce rich text editor you will need to add the following
+mix.copyDirectory('node_modules/tinymce/icons', 'public/js/icons');
+mix.copyDirectory('node_modules/tinymce/plugins', 'public/js/plugins');
+mix.copyDirectory('node_modules/tinymce/skins', 'public/js/skins');
+mix.copyDirectory('node_modules/tinymce/themes', 'public/js/themes');
 ```
 
 Finally run to get compiled frontend resources and start using blade components:
@@ -118,18 +118,18 @@ Finally run to get compiled frontend resources and start using blade components:
 
 #### Checkbox <x-inputs.checkbox ... />
 ```blade
-    <x-inputs.checkbox
-        name="seasons"
-        label="Custom seasons label"
-        :value="['spring']"
-        required
-        comment="You can use <strong>comment</strong> attribute with all of the components and also you can add as much custom attributes as you want to all of the components! <br> Please note that already injected (predefined) attributes will not be available in the custom attributes array and that custom attributes should be named according to the HTML conventions!"
-        :options="['winter', 'spring', 'summer', 'autumn']"
-        {{-- These are custom attributes which will be apended to the input --}}
-        custom_attribute_one="customAttributeOneValue"
-        custom_attribute_two="customAttributeTwoValue"
-        custom_attribute_n="customAttributeNValue"
-    />
+<x-inputs.checkbox
+    name="seasons"
+    label="Custom seasons label"
+    :value="['spring']"
+    required
+    comment="You can use <strong>comment</strong> attribute with all of the components and also you can add as much custom attributes as you want to all of the components! <br> Please note that already injected (predefined) attributes will not be available in the custom attributes array and that custom attributes should be named according to the HTML conventions!"
+    :options="['winter', 'spring', 'summer', 'autumn']"
+    {{-- These are custom attributes which will be apended to the input --}}
+    custom_attribute_one="customAttributeOneValue"
+    custom_attribute_two="customAttributeTwoValue"
+    custom_attribute_n="customAttributeNValue"
+/>
 ```
 
 Checkbox component accepts **:options** array as a set of keys and labels. If keys are not specified then snake cased values will be used. The **:value** attribute accepts an array of keys which will be used to determine if the option is checked.
@@ -203,14 +203,14 @@ Cropper component accepts optional **:aspectRatio** array. The optional **value*
 Based on the [cropper](https://github.com/fengyuanchen/cropperjs) and the [jquery-cropper](https://github.com/fengyuanchen/jquery-cropper).
 
 Use example:
-```php
-    <x-forms.cropper
-        name="attrName"
-        value="{{ $model->attrName }}"
-        label="Attr name"
-        required
-        :aspectRatio="[0, 0]"
-    />
+```blade
+<x-forms.cropper
+    name="attrName"
+    value="{{ $model->attrName }}"
+    label="Attr name"
+    required
+    :aspectRatio="[0, 0]"
+/>
 ```
 
 #### Date
@@ -218,16 +218,16 @@ Use example:
 Based on the [flatpickr](https://github.com/flatpickr/flatpickr).
 
 Use example:
-```php
-    <x-forms.date
-        name="attrName"
-        value="{{ $model->attrName }}"
-        label="Attr name"
-        // required
-        // time
-        // placeholder
-        autofocus
-    />
+```blade
+<x-forms.date
+    name="attrName"
+    value="{{ $model->attrName }}"
+    label="Attr name"
+    // required
+    // time
+    // placeholder
+    autofocus
+/>
 ```
 
 #### Select
