@@ -67,7 +67,7 @@
                         />
 
                         <x-inputs.input
-                            name="name_mne"
+                            name="name"
                             {{-- label="Custom headline label" --}}
                             {{-- placeholder="Headline placeholder" --}}
                             {{-- value="23" --}}
@@ -161,7 +161,18 @@
                             <x-inputs.file name="logo" inline="3" value="{{ $firm->logo }}" />
                         </div>
 
+                        {{-- TODO: Document translated component --}}
+                        <x-translated :languages="['sr', 'en']">
+                            @foreach ($locales as $locale)
+                                <x-slot :name="$locale">
+                                    <x-inputs.input name="headline_{{ $locale }}" type="text" />
+                                    <x-inputs.input name="content_{{ $locale }}" type="text" />
+                                </x-slot>
+                            @endforeach
+                        </x-translated>
+
                         {{-- TODO: Add multiple component --}}
+
                         {{-- <x-inputs.multi-input
                             name="todo"
                             :inputs="

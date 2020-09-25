@@ -1,4 +1,4 @@
-<label class="@error($name) text-danger @enderror" for="bc-{{ $name }}">
+<label class="@error($name) text-danger @enderror" for="{{ $getId }}">
     {{ $getLabel() }}
 
     @if($required)

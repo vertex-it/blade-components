@@ -9,7 +9,7 @@
     </div>
     <input
         class="form-control"
-        id="bc-{{ $name }}"
+        id="{{ $getId }}"
         name="{{ $name }}"
         placeholder="{{ $getPlaceholder() }}"
         type="text"
@@ -25,7 +25,7 @@
 
 @push('scripts')
     <script>
-        flatpickr('#bc-{{ $name }}', {
+        flatpickr('#{{ $getId }}', {
             altInput: true,
             weekNumbers: true,
             allowInput: true,

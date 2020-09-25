@@ -4,13 +4,13 @@
 <div class="custom-file">
     <input
         class="custom-file-input"
-        id="bc-{{ $name }}"
+        id="{{ $getId }}"
         name="{{ $name }}"
         type="file"
         {{ $outputRequired() }}
         {{ $attributes }}
     >
-    <label class="custom-file-label" for="{{ $name }}" id="bc-file-{{ $name }}-label">
+    <label class="custom-file-label" for="{{ $name }}" id="{{ $getId }}_file">
         {{ __('blade-components::components.choose_file') }}
     </label>
 </div>
@@ -30,7 +30,7 @@
 
 @push('scripts')
     <script>
-        document.getElementById("bc-{{ $name }}").onchange = function() {
+        document.getElementById("{{ $getId }}").onchange = function() {
             var fullName = this.value.split('\\').pop().split('.');
             var fileName = fullName[0];
             var extension = fullName[1];
@@ -45,7 +45,7 @@
                 fileName = "{{ __('blade-components::components.choose_file') }}";
             }
 
-            document.getElementById("bc-file-{{ $name }}-label").innerHTML = fileName;
+            document.getElementById("{{ $getId }}_file").innerHTML = fileName;
         };
     </script>
 @endpush

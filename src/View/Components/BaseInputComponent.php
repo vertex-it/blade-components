@@ -2,6 +2,7 @@
 
 namespace VertexIT\BladeComponents\View\Components;
 
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 abstract class BaseInputComponent extends Component
@@ -13,6 +14,7 @@ abstract class BaseInputComponent extends Component
     public $required;
     public $comment;
     public $inline;
+    public $id;
 
     public function __construct(
         $name,
@@ -30,18 +32,31 @@ abstract class BaseInputComponent extends Component
         $this->required = $required;
         $this->comment = $comment;
         $this->inline = $inline;
+        $this->id = Str::random(6);
     }
 
     abstract public function render();
+
+    public function getId()
+    {
+        $name = str_replace(['[', ']'], ['_', ''], $this->name);
+
+        return 'bc_' . $name . '_' . $this->id;
+    }
 
     public function getLabel()
     {
         return $this->label ?? $this->getNameAsTitle();
     }
 
+    public function getEscapedName()
+    {
+        return str_replace(['[', ']'], ['_', ''], $this->name);
+    }
+
     public function getNameAsTitle()
     {
-        return ucfirst(str_replace('_', ' ', $this->name));
+        return ucfirst(str_replace('_', ' ', $this->getEscapedName()));
     }
 
     public function getPlaceholder()

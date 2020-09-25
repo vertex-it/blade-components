@@ -11,11 +11,13 @@
         @method($method)
     @endif
 
-    {{ $slot }}
+    <div class="element-box">{{ $slot }}</div>
 
-    <br>
+    <button
+        class="btn btn-primary btn-block"
+        style="height: 40px; font-weight: 700; box-shadow: 0px 2px 4px rgb(126 142 177 / 40%);"
+    >
 
-    <button type="submit" class="btn btn-primary col-md-3">
         {{ $buttonText ?? 'Submit' }}
     </button>
 </form>

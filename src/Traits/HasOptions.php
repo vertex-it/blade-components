@@ -44,6 +44,6 @@ trait HasOptions
             return in_array($option, $checkAgainst) ? $output : '';
         }
 
-        return $option === $checkAgainst ? $output : '';
+        return $option == $checkAgainst ? $output : '';
     }
 }

@@ -3,11 +3,11 @@
 
 <input
     class="form-control"
-    id="bc-{{ $name }}"
+    id="{{ $getId }}"
     name="{{ $name }}"
     placeholder="{{ $getPlaceholder() }}"
     type="{{ $type }}"
-    value="{{ old($name, $value) }}"
+    value="{!! old($name, $value) !!}"
     {{ $outputRequired() }}
     {{ $attributes }}
 >

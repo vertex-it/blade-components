@@ -9,7 +9,7 @@
                     data-aspect-ratio-x="{{ $aspectRatioX ?? 0 }}"
                     data-aspect-ratio-y="{{ $aspectRatioY ?? 0 }}"
                     data-name="{{ $name }}"
-                    id="bc-{{ $name }}"
+                    id="{{ $getId }}"
                     type="file"
                     {{ $outputRequired() }}
                     {{ $attributes }}
@@ -57,7 +57,7 @@
 @push ('scripts')
     <script>
         $(document).ready(function () {
-            $('#bc-{{ $name }}').change(function() {
+            $('#{{ $getId }}').change(function() {
                 let name = $(this).data('name');
                 let aspectRatio = {
                     x: parseInt($(this).data('aspect-ratio-x')),

@@ -3,7 +3,7 @@
 
 <input
     class="form-control text-center"
-    id="bc-{{ $name }}"
+    id="{{ $getId }}"
     name="{{ $name }}"
     placeholder="{{ $placeholder ?? '00:00' }}"
     type="text"
@@ -18,8 +18,8 @@
 
 @push('scripts')
     <script>
-        $('#bc-{{ $name }}').timepicker({
-            "appendTo": $('#bc-{{ $name }}').parent(),
+        $('#{{ $getId }}').timepicker({
+            "appendTo": $('#{{ $getId }}').parent(),
             timeFormat: "H:i",
             listWidth: 1,
             step: '{{ $attributes["data-step"] ?? "30" }}',

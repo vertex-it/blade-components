@@ -75,13 +75,14 @@ To start using blade components you will need to add the following to your webpa
 
 Finally run to get compiled frontend resources and start using blade components:
 ```bash
-    npm run dev
-    // npm run prod if you are in production
+    npm run dev // or npm run prod if you are in production
 ```
 
 ## Usage
 
 <!-- TODO: Add blade components mention and url to the docs -->
+
+### Breadcrumb component
 
 ### Form component
 
@@ -92,7 +93,15 @@ Finally run to get compiled frontend resources and start using blade components:
         buttonText="Submit"
         multipart
     >
+        {{-- There goes slot content --}}
+    </x-form>
 ```
+
+### Modal and modal-button component
+
+### Multi-input component
+
+### Translated component
 
 ### Input components
 

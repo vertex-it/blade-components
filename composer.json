@@ -22,7 +22,7 @@
     ],
     "require": {
         "php": "^7.3",
-        "illuminate/view": "^7.17"
+        "illuminate/view": "^7.0"
     },
     "require-dev": {
         "orchestra/testbench": "^5.0",

@@ -2,14 +2,14 @@
 @include('blade-components::components.inputs.includes.label')
 
 <select
-    class="{{ ! $selectize ? 'form-control' : '' }}"
+    class="{{ $selectize ? 'bc-select' : 'form-control' }}"
     name="{{ $name . ($multiple ? '[]' : '') }}"
-    id="bc-{{ $name }}"
+    id="{{ $getId }}"
     {{ $multiple ? ' multiple ' : '' }}
     {{ $outputRequired() }}
     {{ $attributes }}
 >
-    <option selected disabled value="">{{
+    <option value="" selected="selected">{{
         $getPlaceholder()
     }}</option>
 
@@ -24,13 +24,16 @@
 @include('blade-components::components.inputs.includes.error')
 @include('blade-components::components.inputs.includes.inlinable-bottom')
 
-@push('scripts')
-    @if($selectize)
-        <script>
-            $('#bc-{{ $name }}').selectize({
-                plugins: ['remove_button'],
-                allowEmptyOption: false,
-            });
-        </script>
-    @endif
-@endpush
+@if ($selectize)
+    @once
+        @push('scripts')
+            <script>
+                selectizeDefaultConfig = {
+                    plugins: ['remove_button']
+                };
+
+                $('select.bc-select').selectize(selectizeDefaultConfig);
+            </script>
+        @endpush
+    @endonce
+@endif
