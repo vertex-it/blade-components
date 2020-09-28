@@ -25,13 +25,13 @@ class Breadcrumb extends Component {
     // TSC: Probably wont work for model names like BlogCategory, etc.
     private function addPreparedRoute($modelName, $route = 'index', $routeModel = null, $routeModelName = null)
     {
-        $modelPluralName = Str::of($modelName)->lower()->plural();
+        $modelPluralName = Str::of($modelName)->plural()->kebab()->lower();
 
         $route = implode('.', ['admin', $modelPluralName, $route]);
 
         array_push($this->routes, [
             'url' => route($route, $routeModel),
-            'name' => $routeModelName ?? ucfirst($modelPluralName)
+            'name' => $routeModelName ?? $modelPluralName
         ]);
     }
 

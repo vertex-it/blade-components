@@ -3,7 +3,7 @@
 
     <div>
         <button
-            class="btn btn-success {{ count($value) > 0 ? 'mb-4' : '' }}"
+            class="btn btn-success {{ is_array($value) ? 'mb-4' : '' }}"
             id="uppy-modal-{{ $key }}"
             title="{{ __('blade-components::components.add_more') }}"
         >
@@ -30,7 +30,7 @@
     <div
         class="row flex droppable-trash"
         id="uppy-removed-{{ $key }}"
-        style="{{ count($value) > 0 ? '' : 'display: none;' }}"
+        style="{{ is_array($value) ? '' : 'display: none;' }}"
     ></div>
 
     @include('blade-components::components.inputs.includes.comment')

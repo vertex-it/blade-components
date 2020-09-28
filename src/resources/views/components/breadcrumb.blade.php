@@ -9,7 +9,7 @@
         @foreach ($routes as $route)
             <li class="breadcrumb-item">
                 <a href="{{ $route['url'] }}">
-                    {{ __('models.' . $route['name']) }}
+                    {{ __(ucfirst($route['name'])) }}
                 </a>
             </li>
         @endforeach
