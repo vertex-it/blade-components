@@ -14,9 +14,19 @@
     }}</option>
 
     @foreach($getPreparedOptions as $key => $option)
-        <option value="{{ $key }}" {{ $checkIfActive($key, ' selected ') }}>{{
-            $option
-        }}</option>
+        @if(is_array($option))
+            <optgroup label="{{ $key }}">
+                @foreach($option as $optionKey => $optionLabel)
+                    <option value="{{ $optionKey }}" {{ $checkIfActive($optionKey, ' selected ') }}>{{
+                        $optionLabel
+                    }}</option>
+                @endforeach
+            </optgroup>
+        @else
+            <option value="{{ $key }}" {{ $checkIfActive($key, ' selected ') }}>{{
+                $option
+            }}</option>
+        @endif
     @endforeach
 </select>
 

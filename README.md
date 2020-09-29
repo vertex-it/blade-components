@@ -167,6 +167,7 @@ Cropper component accepts optional **:aspectRatio** array. The optional **value*
 ```
 
 #### Select <x-inputs.select ... />
+<!-- TODO: Document optgroup -->
 ```blade
 
 ```
