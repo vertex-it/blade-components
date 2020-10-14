@@ -4,7 +4,7 @@
             <a
                 class="nav-link {{ $loop->first ? 'active' : '' }}"
                 data-toggle="tab"
-                href="#tab_{{ Str::lower($language) }}"
+                href="#tab_{{ Str::lower($language) }}_{{ $id }}"
             >
                 {{ Str::upper($language) }}
             </a>
@@ -13,7 +13,7 @@
 </ul>
 <div class="tab-content mb-4">
     @foreach (['mne', 'en'] as $language)
-        <div class="tab-pane {{ $loop->first ? 'active' : '' }}" id="tab_{{ Str::lower($language) }}">
+        <div class="tab-pane {{ $loop->first ? 'active' : '' }}" id="tab_{{ Str::lower($language) }}_{{ $id }}">
             {{ ${$language} }}
         </div>
     @endforeach

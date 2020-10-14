@@ -1,7 +1,7 @@
 @include('blade-components::components.inputs.includes.inlinable-top')
 @include('blade-components::components.inputs.includes.label')
 
-<div id="{{ $name }}">
+<div id="{{ $name }}" class="mb-4">
     <x-inputs.work-time-day name="{{ $name }}" workDay="Ponedjeljak">
         <button
             id="apply_to_all_{{ $name }}"
