@@ -1,8 +1,12 @@
-<div class="js-cropper-tools mb-3" data-name="{{ $name }}" style="display: none;">
-    <img id="cropper-image-{{ $name }}" style="height: 400px;">
+<div class="col-lg-8 js-cropper-tools" data-name="{{ $name }}" style="display: none;">
+    <div class="row">
+        <div class="col-12" style="height: 400px;">
+            <img id="cropper-image-{{ $name }}" style="height: 100%;">
+        </div>
+    </div>
 
     <div
-        class="row col-12 d-flex justify-content-center mt-3 cropper-details-{{ $name }} mb-4"
+        class="row d-flex justify-content-center mt-3 cropper-details-{{ $name }} mb-4"
         data-name="{{ $name }}"
     >
         <div class="mr-4 view-modes">
@@ -61,7 +65,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-12 text-center">
             <button
                 id="btn-crop-{{ $name }}"

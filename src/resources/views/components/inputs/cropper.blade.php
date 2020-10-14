@@ -1,56 +1,47 @@
-<div class="js-cropper-group">
-    <div class="form-group row">
-        <div class="col-sm-7 col-md-6 col-lg-4">
-            @include('blade-components::components.inputs.includes.label')
+<div class="form-group row">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        @include('blade-components::components.inputs.includes.label')
 
-            <div class="custom-file">
-                <input
-                    class="custom-file-input"
-                    data-aspect-ratio-x="{{ $aspectRatioX ?? 0 }}"
-                    data-aspect-ratio-y="{{ $aspectRatioY ?? 0 }}"
-                    data-name="{{ $name }}"
-                    id="{{ $getId }}"
-                    type="file"
-                    {{ $outputRequired() }}
-                    {{ $attributes }}
-                >
-                <label class="custom-file-label" for="{{ $name }}">
-                    Choose image
-                </label>
-            </div>
-
-            @include('blade-components::components.inputs.includes.comment')
-            @include('blade-components::components.inputs.includes.error')
+        <div class="custom-file">
+            <input
+                class="custom-file-input"
+                data-aspect-ratio-x="{{ $aspectRatioX ?? 0 }}"
+                data-aspect-ratio-y="{{ $aspectRatioY ?? 0 }}"
+                data-name="{{ $name }}"
+                id="{{ $getId }}"
+                type="file"
+                {{ $outputRequired() }}
+                {{ $attributes }}
+            >
+            <label class="custom-file-label" for="{{ $name }}">
+                Choose image
+            </label>
         </div>
+
+        <input
+            type="hidden"
+            id="{{ $name }}_cropped"
+            @if(old($name))
+                name="{{ $name }}"
+                value="{{ old($name) }}"
+            @endif
+            {{ $attributes }}
+        >
+
+        @include('blade-components::components.inputs.includes.comment')
+        @include('blade-components::components.inputs.includes.error')
     </div>
 
     @include ('blade-components::components.inputs.cropper.buttons')
 
-    <input
-        type="hidden"
-        id="{{ $name }}_cropped"
-        @if(old($name))
-            name="{{ $name }}"
-            value="{{ old($name) }}"
-        @endif
-        {{ $attributes }}
-    >
-
-    <img
-        src="{{ old("{$name}") }}"
-        class="old_{{ $name }}_cropped mb-3 img-thumbnail"
-        @if(! old("{$name}"))
-            style="display: none; max-height: 300px; max-width: 500px;"
-        @endif
-    >
-    <div class="old_{{ $name }}_value">
-        @if($value && ! old($name))
-            <img
-                src="{{ $value }}"
-                style="max-height: 300px; max-width: 500px;"
-                class="mb-3 img-thumbnail"
-            >
-        @endif
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <img
+            src="{{ old($name) }}"
+            class="preview_{{ $name }}_cropped mb-3 img-thumbnail img-fluid"
+            @if(! old($name) || ! $value)
+                style="display: none;"
+            @endif
+        >
     </div>
 </div>
 
@@ -64,8 +55,7 @@
                     y: parseInt($(this).data('aspect-ratio-y')),
                 };
 
-                $('.old_' + name + '_cropped').hide();
-                $('.old_' + name + '_value').hide();
+                $('.preview_{{ $name }}_cropped').hide();
                 $('.js-cropper-tools[data-name="' + name + '"]').show();
 
                 readURL(this, name, aspectRatio);
@@ -133,13 +123,12 @@
                             .attr('name', name)
                             .val(image);
 
-                        $('.old_' + name + '_cropped').attr('src', image).show();
+                        $('.preview_' + name + '_cropped').attr('src', image).show();
 
                         $('#cropper-image-' + name).cropper('destroy');
                         $('#cropper-image-' + name).removeAttr('src').hide();
 
                         $('.js-cropper-tools[data-name="' + name + '"]').hide();
-                        $('.' + name + '_old').hide();
 
                         toastr.success('{{ __("Image has been cropped") }}');
                     },
