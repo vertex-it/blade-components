@@ -1,46 +1,54 @@
-<div class="form-group">
-    @include('blade-components::components.inputs.includes.label')
+<div class="form-group row mt-4 @error($name) has-error has-danger @enderror">
+    <div class="col-12">
+        @include('blade-components::components.inputs.includes.label')
 
-    <div>
-        <button
-            class="btn btn-success {{ is_array($value) ? 'mb-4' : '' }}"
-            id="uppy-modal-{{ $key }}"
-            title="{{ __('blade-components::components.add_more') }}"
-        >
-            <i class="fa fa-plus"></i>
-            {{ __('blade-components::components.add_more') }}
-        </button>
+        <div>
+            <button
+                class="btn btn-success {{ is_array($value) ? 'mb-4' : '' }}"
+                id="uppy-modal-{{ $key }}"
+                title="{{ __('blade-components::components.add_more') }}"
+                {{-- type="button" --}}
+            >
+                <i class="fa fa-plus"></i>
+                {{ __('blade-components::components.add_more') }}
+            </button>
+        </div>
+
+        <div class="uppy-{{ $key }}">
+            <div id="drag-drop-area-{{ $key }}"></div>
+        </div>
+
+        <input name="{{ $name }}[]" type="hidden" value="">
+
+        <div class="row flex" id="uppy-uploaded-{{ $key }}">
+            @foreach($value ?? [] as $url)
+                <div class="col-lg-2 col-md-3 col-sm-4 mb-4 uploaded-container">
+                    @if(in_array(pathinfo($url, PATHINFO_EXTENSION), ['jpg', 'jpeg']))
+                        <img class="rounded img-thumbnail img-fluid" src="{{ $url }}" />
+                    @else
+                        <a href="{{ $url }}" target="_blank" class="rounded" rel="noopener noreferrer">
+                            <i class="os-icon os-icon-documents-03"></i>
+                        </a>
+                    @endif
+                    <input name="{{ $name }}[]" type="hidden" value="{{ $url }}">
+                </div>
+            @endforeach
+        </div>
+
+        <div
+            class="row flex droppable-trash"
+            id="uppy-removed-{{ $key }}"
+            style="{{ is_array($value) ? '' : 'display: none;' }}"
+        ></div>
+
+        @include('blade-components::components.inputs.includes.comment')
+        @include('blade-components::components.inputs.includes.error')
     </div>
-
-    <div class="uppy-{{ $key }}">
-        <div id="drag-drop-area-{{ $key }}"></div>
-    </div>
-
-    <input name="{{ $name }}[]" type="hidden" value="">
-
-    <div class="row flex" id="uppy-uploaded-{{ $key }}">
-        @foreach($value ?? [] as $image)
-            <div class="col-lg-2 col-md-3 col-sm-4 mb-4 uploaded-image-container">
-                <img class="rounded img-thumbnail img-fluid" src="{{ $image }}" />
-                <input name="{{ $name }}[]" type="hidden" value="{{ $image }}">
-            </div>
-        @endforeach
-    </div>
-
-    <div
-        class="row flex droppable-trash"
-        id="uppy-removed-{{ $key }}"
-        style="{{ is_array($value) ? '' : 'display: none;' }}"
-    ></div>
-
-    @include('blade-components::components.inputs.includes.comment')
-    @include('blade-components::components.inputs.includes.error')
 </div>
 
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.2/Sortable.js"></script>
     <script>
-
         var uploaded{{ $key }} = document.getElementById("uppy-uploaded-{{ $key }}");
         var sortableUploaded{{ $key }} = Sortable.create(uploaded{{ $key }}, {
             animation: 150,
@@ -64,11 +72,11 @@
         // TODO: Hide/Show uppy button
     </script>
     <script>
-        $('#uppy-modal-{{ $key }}').on('click', function (e) {
+        $(document).on('click', '#uppy-modal-{{ $key }}', function (e) {
             e.preventDefault();
         });
 
-        const uppy = Uppy().use(Dashboard, {
+        const uppy{{ $key }} = Uppy().use(Dashboard, {
             inline: false,
             target: '#drag-drop-area-{{ $key }}',
             trigger: '#uppy-modal-{{ $key }}',
@@ -105,6 +113,7 @@
             ],
         })
         .use(XHRUpload, {
+            // TODO: Uppy will be used for all file types, not only images...
             endpoint: '{{ $route ?? route("blade-components.images") }}',
             method: 'POST',
             formData: true,
@@ -118,14 +127,45 @@
             }
         });
 
-        uppy.on('upload-success', (file, response) => {
+        var imageTypes = ['png', 'tif', 'tiff', 'wbmp', 'ico', 'jng', 'bmp', 'svg', 'webp', 'jpg', 'jpeg'];
+        function isImage(url) {
+            var extension = url.split('.').pop();
+
+            return imageTypes.includes(extension);
+        }
+
+        function fileName(url) {
+            var name = url.split('/').pop();
+            var extension = url.split('.').pop();
+
+            if (name.length > 25) {
+                name = name.substring(0, 25) + '...' + extension;
+            } else {
+                name = name + '.' + extension;
+            }
+
+            return name;
+        }
+
+        uppy{{ $key }}.on('upload-success', (file, response) => {
             $('#uppy-modal-{{ $key }}').addClass('mb-4');
 
             $('#uppy-removed-{{ $key }}').show();
 
+            if (isImage(response.body)) {
+                var display = '<img class="rounded img-thumbnail img-fluid border-success" src="' + response.body + '" />';
+            } else {
+                var display = '<a href="' + response.body +
+                    '" target="_blank" class="rounded border-success" rel="noopener noreferrer">' +
+                    '<i class="os-icon os-icon-documents-03"></i>' +
+                    // TODO: Add filename
+                    // '<p>' + fileName(response.body) + '</p>'
+                    '</a>';
+            }
+
             $('#uppy-uploaded-{{ $key }}').append(
-                '<div class="col-lg-2 col-md-3 col-sm-4 mb-4 uploaded-image-container">' +
-                    '<img class="rounded img-thumbnail img-fluid border-success" src="' + response.body + '" />' +
+                '<div class="col-lg-2 col-md-3 col-sm-4 mb-4 uploaded-container">' +
+                    display +
                     '<input name="{{ $name }}[]" type="hidden" value="' + response.body + '">' +
                 '</div>'
             );

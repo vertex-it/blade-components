@@ -1,5 +1,5 @@
 <label class="@error($name) text-danger @enderror" for="{{ $getId }}">
-    {{ $getLabel() }}
+    {!! $getLabel() !!}
 
     @if($required)
         <span class="text-danger">*</span>

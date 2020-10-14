@@ -21,7 +21,9 @@ use VertexIT\BladeComponents\View\Components\Inputs\Toggle;
 use VertexIT\BladeComponents\View\Components\Inputs\Cropper;
 use VertexIT\BladeComponents\View\Components\Inputs\Checkbox;
 use VertexIT\BladeComponents\View\Components\Inputs\Textarea;
+use VertexIT\BladeComponents\View\Components\Inputs\WorkTime;
 use VertexIT\BladeComponents\View\Components\Inputs\MultiInput;
+use VertexIT\BladeComponents\View\Components\Inputs\WorkTimeDay;
 
 class BladeComponents
 {
@@ -46,5 +48,7 @@ class BladeComponents
         Blade::component('inputs.time', Time::class);
         Blade::component('inputs.toggle', Toggle::class);
         Blade::component('inputs.uppy', Uppy::class);
+        Blade::component('inputs.work-time', WorkTime::class);
+        Blade::component('inputs.work-time-day', WorkTimeDay::class);
     }
 }

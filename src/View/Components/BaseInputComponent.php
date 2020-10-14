@@ -16,6 +16,8 @@ abstract class BaseInputComponent extends Component
     public $inline;
     public $id;
 
+    // FIX: Implement columns in all components
+    // IDEA: Maybe we don't need all properties mapped, for example 'columns'
     public function __construct(
         $name,
         $label = null,
