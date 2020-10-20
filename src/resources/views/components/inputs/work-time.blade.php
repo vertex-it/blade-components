@@ -1,8 +1,9 @@
 @include('blade-components::components.inputs.includes.inlinable-top')
 @include('blade-components::components.inputs.includes.label')
 
+{{-- BUG: Old is not populated on validation error --}}
 <div id="{{ $name }}" class="mb-4">
-    <x-inputs.work-time-day name="{{ $name }}" workDay="Ponedjeljak">
+    <x-inputs.work-time-day name="{{ $name }}[monday]" workDay="{{ __('blade-components::components.monday') }}">
         <button
             id="apply_to_all_{{ $name }}"
             class="btn btn-primary btn-sm mb-2"
@@ -13,12 +14,12 @@
         </button>
     </x-inputs.work-time-day>
 
-    <x-inputs.work-time-day name="{{ $name }}" workDay="Utorak" />
-    <x-inputs.work-time-day name="{{ $name }}" workDay="Srijeda" />
-    <x-inputs.work-time-day name="{{ $name }}" workDay="Četvrtak" />
-    <x-inputs.work-time-day name="{{ $name }}" workDay="Petak" />
-    <x-inputs.work-time-day name="{{ $name }}" workDay="Subota" />
-    <x-inputs.work-time-day name="{{ $name }}" workDay="Nedjelja" />
+    <x-inputs.work-time-day name="{{ $name }}[tuesday]" workDay="{{ __('blade-components::components.tuesday') }}" />
+    <x-inputs.work-time-day name="{{ $name }}[wednesday]" workDay="{{ __('blade-components::components.wednesday') }}" />
+    <x-inputs.work-time-day name="{{ $name }}[thursday]" workDay="{{ __('blade-components::components.thursday') }}" />
+    <x-inputs.work-time-day name="{{ $name }}[friday]" workDay="{{ __('blade-components::components.friday') }}" />
+    <x-inputs.work-time-day name="{{ $name }}[saturday]" workDay="{{ __('blade-components::components.saturday') }}" />
+    <x-inputs.work-time-day name="{{ $name }}[sunday]" workDay="{{ __('blade-components::components.sunday') }}" />
 </div>
 
 @include('blade-components::components.inputs.includes.comment')
@@ -28,13 +29,44 @@
 @push('scripts')
     <script>
         $(document).on('click', '#apply_to_all_{{ $name }}', function() {
-            let $day = $(this).parents('#row_{{ $name }}');
-            let from = $day.find('input[name$="[from][]"]').val();
-            let to = $day.find('input[name$="[to][]"]').val();
+            let applyDay = $(this).parents('#row_work_time');
 
-            let $days = $(this).parents('#{{ $name }}');
-            $days.find('input[name$="[from][]"]').val(from);
-            $days.find('input[name$="[to][]"]').val(to);
+            let fromInputSelector = 'input[name$="[from][]"]';
+            let toInputSelector = 'input[name$="[to][]"]';
+
+            let dayData = {
+                from: applyDay.find(fromInputSelector).map(function (id, input) {
+                    return $(input).val();
+                }).get(),
+                to: applyDay.find(toInputSelector).map(function (id, input) {
+                    return $(input).val();
+                }).get(),
+                count: applyDay.find(fromInputSelector).length
+            }
+
+            $(this).parents('#{{ $name }}')
+                .children('#row_work_time')
+                .each(function (i, day) {
+                    $(day).find('.row.bc-multiple').each(function (i, row) {
+                        if (i != 0) {
+                            row.remove();
+                        }
+                    });
+
+                    for (let index = 1; index < dayData.count; index++) {
+                        $(day).find('.bc-btn-add').click();
+                    }
+
+                    $(day).find(fromInputSelector)
+                        .each(function(i, input) {
+                            $(input).val(dayData.from[i]);
+                        });
+
+                    $(day).find(toInputSelector)
+                        .each(function(i, input) {
+                            $(input).val(dayData.to[i]);
+                        });
+                });
         });
     </script>
 @endpush

@@ -36,9 +36,9 @@
 
     <div class="col-sm-12 col-md-6 col-lg-4">
         <img
-            src="{{ old($name) }}"
+            src="{{ old($name, $value) }}"
             class="preview_{{ $name }}_cropped mb-3 img-thumbnail img-fluid"
-            @if(! old($name) || ! $value)
+            @if(! old($name, $value))
                 style="display: none;"
             @endif
         >

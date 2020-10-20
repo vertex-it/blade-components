@@ -1,4 +1,4 @@
-<div id="row_{{ $name }}">
+<div id="row_work_time">
     <x-multiple>
         {{ $slot }}
         <x-multiple-row>

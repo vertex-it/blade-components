@@ -7,4 +7,12 @@ return [
     'cropper_button_free' => 'Free',
     'delete_button' => 'Delete',
     'sort_button' => 'Sort',
+
+    'monday' => 'Monday',
+    'tuesday' => 'Tuesday',
+    'wednesday' => 'Wednesday',
+    'thursday' => 'Thursday',
+    'friday' => 'Friday',
+    'saturday' => 'Saturday',
+    'sunday' => 'Sunday',
 ];

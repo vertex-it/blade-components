@@ -8,4 +8,12 @@ return [
     'cropper_button_free' => 'Slobodno',
     'delete_button' => 'Obrišite',
     'sort_button' => 'Sortirajte',
+
+    'monday' => 'Ponedjeljak',
+    'tuesday' => 'Utorak',
+    'wednesday' => 'Srijeda',
+    'thursday' => 'Četvrtak',
+    'friday' => 'Petak',
+    'saturday' => 'Subota',
+    'sunday' => 'Nedjelja',
 ];
