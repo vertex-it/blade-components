@@ -10,7 +10,7 @@
                 data-name="{{ $name }}"
                 id="{{ $getId }}"
                 type="file"
-                {{ $outputRequired() }}
+                {{ ! old($name, $value) ? $outputRequired() : '' }}
                 {{ $attributes }}
             >
             <label class="custom-file-label" for="{{ $name }}">
