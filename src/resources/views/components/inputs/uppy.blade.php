@@ -4,7 +4,7 @@
 
         <div>
             <button
-                class="btn btn-success {{ is_array($value) ? 'mb-4' : '' }}"
+                class="btn btn-success {{ is_array(old($name, $value)) ? 'mb-4' : '' }}"
                 id="uppy-modal-{{ $key }}"
                 title="{{ __('blade-components::components.add_more') }}"
                 {{-- type="button" --}}
@@ -21,24 +21,26 @@
         <input name="{{ $name }}[]" type="hidden" value="">
 
         <div class="row flex" id="uppy-uploaded-{{ $key }}">
-            @foreach($value ?? [] as $url)
-                <div class="col-lg-2 col-md-3 col-sm-4 mb-4 uploaded-container">
-                    @if(in_array(pathinfo($url, PATHINFO_EXTENSION), ['jpg', 'jpeg']))
-                        <img class="rounded img-thumbnail img-fluid" src="{{ $url }}" />
-                    @else
-                        <a href="{{ $url }}" target="_blank" class="rounded" rel="noopener noreferrer">
-                            <i class="os-icon os-icon-documents-03"></i>
-                        </a>
-                    @endif
-                    <input name="{{ $name }}[]" type="hidden" value="{{ $url }}">
-                </div>
+            @foreach(old($name, $value) ?? [] as $url)
+                @if($url)
+                    <div class="col-lg-2 col-md-3 col-sm-4 mb-4 uploaded-container">
+                        @if(in_array(pathinfo($url, PATHINFO_EXTENSION), ['jpg', 'jpeg']))
+                            <img class="rounded img-thumbnail img-fluid" src="{{ $url }}" />
+                        @else
+                            <a href="{{ $url }}" target="_blank" class="rounded" rel="noopener noreferrer">
+                                <i class="os-icon os-icon-documents-03"></i>
+                            </a>
+                        @endif
+                        <input name="{{ $name }}[]" type="hidden" value="{{ $url }}">
+                    </div>
+                @endif
             @endforeach
         </div>
 
         <div
             class="row flex droppable-trash"
             id="uppy-removed-{{ $key }}"
-            style="{{ is_array($value) ? '' : 'display: none;' }}"
+            style="{{ is_array(old($name, $value)) ? '' : 'display: none;' }}"
         ></div>
 
         @include('blade-components::components.inputs.includes.comment')
