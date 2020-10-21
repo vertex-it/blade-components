@@ -63,10 +63,14 @@ abstract class BaseInputComponent extends Component
 
     public function getPlaceholder()
     {
-        return $this->placeholder ?? implode(' ', [
-            __('blade-components::components.placeholder_prefix'),
-            strtolower($this->getLabel())
-        ]);
+        if (config('blade_components.show_placeholder')) {
+            return $this->placeholder ?? implode(' ', [
+                __('blade-components::components.placeholder_prefix'),
+                strtolower($this->getLabel())
+            ]);
+        }
+
+        return '';
     }
 
     public function outputRequired()

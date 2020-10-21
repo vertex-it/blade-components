@@ -1,5 +1,5 @@
 <?php
 
 return [
-    // TODO: Remove if not necessary
+    'show_placeholder' => true,
 ];
