@@ -1,9 +1,12 @@
 @include('blade-components::components.inputs.includes.inlinable-top')
 @include('blade-components::components.inputs.includes.label')
 
-{{-- BUG: Old is not populated on validation error --}}
 <div id="{{ $name }}" class="mb-4">
-    <x-inputs.work-time-day name="{{ $name }}[monday]" workDay="{{ __('blade-components::components.monday') }}">
+    <x-inputs.work-time-day
+        name="{{ $name }}[monday]"
+        :value="$preparedValue['monday']"
+        workDay="{{ __('blade-components::components.monday') }}"
+    >
         <button
             id="apply_to_all_{{ $name }}"
             class="btn btn-primary btn-sm mb-2"
@@ -14,12 +17,36 @@
         </button>
     </x-inputs.work-time-day>
 
-    <x-inputs.work-time-day name="{{ $name }}[tuesday]" workDay="{{ __('blade-components::components.tuesday') }}" />
-    <x-inputs.work-time-day name="{{ $name }}[wednesday]" workDay="{{ __('blade-components::components.wednesday') }}" />
-    <x-inputs.work-time-day name="{{ $name }}[thursday]" workDay="{{ __('blade-components::components.thursday') }}" />
-    <x-inputs.work-time-day name="{{ $name }}[friday]" workDay="{{ __('blade-components::components.friday') }}" />
-    <x-inputs.work-time-day name="{{ $name }}[saturday]" workDay="{{ __('blade-components::components.saturday') }}" />
-    <x-inputs.work-time-day name="{{ $name }}[sunday]" workDay="{{ __('blade-components::components.sunday') }}" />
+    <x-inputs.work-time-day
+        name="{{ $name }}[tuesday]"
+        :value="$preparedValue['tuesday']"
+        workDay="{{ __('blade-components::components.tuesday') }}"
+    />
+    <x-inputs.work-time-day
+        name="{{ $name }}[wednesday]"
+        :value="$preparedValue['wednesday']"
+        workDay="{{ __('blade-components::components.wednesday') }}"
+    />
+    <x-inputs.work-time-day
+        name="{{ $name }}[thursday]"
+        :value="$preparedValue['thursday']"
+        workDay="{{ __('blade-components::components.thursday') }}"
+    />
+    <x-inputs.work-time-day
+        name="{{ $name }}[friday]"
+        :value="$preparedValue['friday']"
+        workDay="{{ __('blade-components::components.friday') }}"
+    />
+    <x-inputs.work-time-day
+        name="{{ $name }}[saturday]"
+        :value="$preparedValue['saturday']"
+        workDay="{{ __('blade-components::components.saturday') }}"
+    />
+    <x-inputs.work-time-day
+        name="{{ $name }}[sunday]"
+        :value="$preparedValue['sunday']"
+        workDay="{{ __('blade-components::components.sunday') }}"
+    />
 </div>
 
 @include('blade-components::components.inputs.includes.comment')

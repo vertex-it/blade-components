@@ -31,7 +31,10 @@
     "autoload": {
         "psr-4": {
             "VertexIT\\BladeComponents\\": "src"
-        }
+        },
+        "files": [
+            "src/Http/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
