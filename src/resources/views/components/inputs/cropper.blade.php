@@ -23,7 +23,7 @@
             id="{{ $name }}_cropped"
             @if(old($name))
                 name="{{ $name }}"
-                value="{{ old($name) }}"
+                value="{{ old($name, $value) }}"
             @endif
             {{ $attributes }}
         >
