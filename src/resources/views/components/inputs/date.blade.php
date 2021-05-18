@@ -4,7 +4,7 @@
 <div class="input-group">
     <div class="input-group-prepend">
         <div class="input-group-text">
-            <i class="fa fa-calendar"></i>
+            <x-heroicon-o-calendar height="20px" width="20px" class="float-left mr-1" />
         </div>
     </div>
     <input
@@ -25,19 +25,21 @@
 
 @push('scripts')
     <script>
-        flatpickr('#{{ $getId }}', {
-            altInput: true,
-            weekNumbers: true,
-            allowInput: true,
-            @if($time)
+        $(document).ready(function () {
+            flatpickr('#{{ $getId }}', {
+                altInput: true,
+                weekNumbers: true,
+                allowInput: true,
+                @if($time)
                 enableTime: true,
                 dateFormat: "Y-m-d H:i",
                 altFormat: "F j, Y - H:i",
                 time_24hr: true,
-            @else
+                @else
                 dateFormat: "Y-m-d",
                 altFormat: "F j, Y",
-            @endif
+                @endif
+            });
         });
     </script>
 @endpush

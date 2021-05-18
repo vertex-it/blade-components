@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs mb-3 mt-4 justify-content-center">
+<ul class="form-group nav nav-tabs mb-3 mt-4 justify-content-center">
     @foreach ($languages as $language)
         <li class="nav-item">
             <a
@@ -11,7 +11,8 @@
         </li>
     @endforeach
 </ul>
-<div class="tab-content mb-4">
+
+<div class="form-group tab-content mb-4">
     @foreach (['mne', 'en'] as $language)
         <div class="tab-pane {{ $loop->first ? 'active' : '' }}" id="tab_{{ Str::lower($language) }}_{{ $id }}">
             {{ ${$language} }}

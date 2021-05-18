@@ -18,7 +18,9 @@
 @once
     @push('scripts')
         <script>
-            initTimePicker();
+            $(document).ready(function () {
+                initTimePicker();
+            });
 
             function initTimePicker(scope = '') {
                 $(scope + ' .bc-time').timepicker({

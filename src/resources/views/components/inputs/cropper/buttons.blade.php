@@ -73,8 +73,7 @@
                 data-name="{{ $name }}"
                 type="button"
             >
-                <i class="fa fa-cut"></i>
-                &nbsp;&nbsp;&nbsp;
+                <x-heroicon-o-scissors height="20px" width="20px" class="float-left mr-1" />
                 {{ __('Crop') }}
             </button>
         </div>

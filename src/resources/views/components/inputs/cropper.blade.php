@@ -14,7 +14,8 @@
                 {{ $attributes }}
             >
             <label class="custom-file-label" for="{{ $name }}">
-                Choose image
+                <x-heroicon-o-upload height="20px" width="20px" class="float-left mr-1" />
+                <p>{{ __('blade-components::components.choose_file') }}</p>
             </label>
         </div>
 
@@ -23,7 +24,7 @@
             id="{{ $name }}_cropped"
             @if(old($name))
                 name="{{ $name }}"
-                value="{{ old($name, $value) }}"
+                value="{{ old($name) }}"
             @endif
             {{ $attributes }}
         >
@@ -204,4 +205,12 @@
             return parseFloat((a / Math.pow(c, f)).toFixed(d)) + " " + e[f];
         }
     </script>
+@endpush
+
+@push('styles')
+    <style>
+        .custom-file-input:lang(en) ~ .custom-file-label::after {
+            content: none;
+        }
+    </style>
 @endpush

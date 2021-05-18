@@ -1,15 +1,16 @@
-<div class="form-group row mt-4 @error($name) has-error has-danger @enderror">
+<div class="form-group row @error($name) has-error has-danger @enderror">
     <div class="col-12">
         @include('blade-components::components.inputs.includes.label')
 
         <div>
             <button
-                class="btn btn-success {{ is_array(old($name, $value)) ? 'mb-4' : '' }}"
+                class="btn btn-light {{ is_array(old($name, $value)) ? 'mb-4' : '' }}"
                 id="uppy-modal-{{ $key }}"
                 title="{{ __('blade-components::components.add_more') }}"
                 {{-- type="button" --}}
             >
-                <i class="fa fa-plus"></i>
+{{--                TODO: Document blade-ui-kit/blade-heroicons dependency--}}
+                <x-heroicon-o-plus height="20px" width="20px" class="float-left mr-1" />
                 {{ __('blade-components::components.add_more') }}
             </button>
         </div>

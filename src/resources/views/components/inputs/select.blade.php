@@ -42,7 +42,9 @@
                     plugins: ['remove_button']
                 };
 
-                $('select.bc-select').selectize(selectizeDefaultConfig);
+                $(document).ready(function () {
+                    $('select.bc-select').selectize(selectizeDefaultConfig);
+                });
             </script>
         @endpush
     @endonce
