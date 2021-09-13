@@ -1,15 +1,21 @@
 @include('blade-components::components.inputs.includes.inlinable-top', ['columns' => '2'])
 @include('blade-components::components.inputs.includes.label')
 
-<input
-    class="form-control text-center bc-time"
-    name="{{ $name }}"
-    placeholder="{{ $placeholder ?? '00:00' }}"
-    type="text"
-    value="{{ old($name, $value) }}"
-    {{ $outputRequired() }}
-    {{ $attributes }}
->
+<div class="relative">
+    <div class="absolute left-0 top-0 bottom-0 p-3 rounded-bl rounded-tl">
+        <x-heroicon-o-calendar height="16" width="16" class="text-gray-400" />
+    </div>
+    <input
+        class="form-input bc-time pl-9"
+        name="{{ $name }}"
+        placeholder="{{ $placeholder ?? '00:00' }}"
+        type="text"
+        value="{{ old($name, $value) }}"
+        id="{{ $getId }}"
+        {{ $outputRequired() }}
+        {{ $attributes }}
+    >
+</div>
 
 @include('blade-components::components.inputs.includes.comment')
 @include('blade-components::components.inputs.includes.error')

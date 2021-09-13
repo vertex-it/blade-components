@@ -1,26 +1,22 @@
-<div class="form-group row bc-row">
-    <div class="col-12">
-        @if ($label)
-            <label class="mb-3">
-                {{ $label }}
-            </label>
-        @endif
+<div class="bc-row mb-8">
+    @if ($label)
+        <p class="mb-6 text-gray-600">
+            {{ $label }}
+        </p>
+    @endif
 
-        <div class="mx-2">
-            @if (Str::contains($slot, 'bc-multiple'))
-                {{ $slot }}
-            @else
-                <x-multiple-row>
-                    {{ $slot }}
-                </x-multiple-row>
-            @endif
+    @if (Str::contains($slot, 'bc-multiple'))
+        {{ $slot }}
+    @else
+        <x-multiple-row>
+            {{ $slot }}
+        </x-multiple-row>
+    @endif
 
-            <button class="btn btn-light bc-btn-add" type="button">
-                <x-heroicon-o-plus height="20px" width="20px" class="float-left mr-1" />
-                {{ __('blade-components::components.add_more') }}
-            </button>
-        </div>
-    </div>
+    <button class="btn btn-white shadow-sm btn-sm btn-has-icon font-normal bc-btn-add lg:-mt-4" type="button">
+        <x-heroicon-o-plus height="16" width="16" />
+        {{ __('blade-components::components.add_more') }}
+    </button>
 </div>
 
 @once

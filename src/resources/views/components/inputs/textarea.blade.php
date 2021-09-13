@@ -2,7 +2,7 @@
     @include('blade-components::components.inputs.includes.label')
 
     <textarea
-        class="{{ $richText ? 'tinymce' : 'form-control' }} bc-textarea"
+        class="{{ $richText ? 'tinymce' : 'form-input' }} bc-textarea-{{ $getId }}"
         id="{{ $getId }}"
         name="{{ $name }}"
         rows="7"
@@ -17,13 +17,13 @@
     @include('blade-components::components.inputs.includes.error')
 </div>
 
-@if($richText)
+@if ($richText)
     @once
         @push ('scripts')
             <script>
                 $(document).ready(function () {
                     tinymce.init({
-                        selector: '.bc-textarea',
+                        selector: '.bc-textarea-{{ $getId }}',
                         plugins: 'autoresize advlist hr charmap fullscreen insertdatetime image link preview searchreplace visualblocks wordcount help lists code',
                         toolbar: 'fullscreen | undo redo | bold italic forecolor backcolor styleselect | numlist bullist | alignleft aligncenter alignright alignjustify | link insertfile image | a11ycheck preview code visualblocks wordcount | searchreplace | help',
                         advlist_bullet_styles: "square",

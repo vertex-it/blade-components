@@ -2,8 +2,8 @@
     @include('blade-components::components.inputs.includes.label')
 
     @foreach($getPreparedOptions as $key => $label)
-        <div class="form-check">
-            <label class="ckbox @if(! $loop->last) mb-2 @endif">
+        <div>
+            <label class="@if(! $loop->last) mb-2 @endif">
                 <input
                     name="{{ $name }}[]"
                     type="checkbox"
@@ -11,7 +11,7 @@
                     {{ $checkIfActive($key, ' checked ') }}
                     {{ $attributes }}
                 >
-                <span>
+                <span class="ml-1 text-gray-800">
                     {{ $label }}
                 </span>
             </label>
