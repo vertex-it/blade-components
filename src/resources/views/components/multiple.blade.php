@@ -5,19 +5,32 @@
         </p>
     @endif
 
-    @if (Str::contains($slot, 'bc-multiple'))
-        {{ $slot }}
-    @else
-        <x-multiple-row>
+    <div id="{{ $id }}">
+        @if (Str::contains($slot, 'bc-multiple'))
             {{ $slot }}
-        </x-multiple-row>
-    @endif
+        @else
+            <x-multiple-row>
+                {{ $slot }}
+            </x-multiple-row>
+        @endif
+    </div>
 
     <button class="btn btn-white shadow-sm btn-sm btn-has-icon font-normal bc-btn-add lg:-mt-4" type="button">
         <x-heroicon-o-plus height="16" width="16" />
         {{ __('blade-components::components.add_more') }}
     </button>
 </div>
+
+@push('scripts')
+    <script>
+        Sortable.create(document.getElementById('{{ $id }}'), {
+            animation: 150,
+            group: '{{ $label }}',
+            direction: 'vertical',
+            handle: '.bc-sort-row',
+        })
+    </script>
+@endpush
 
 @once
     @push('scripts')
@@ -26,7 +39,7 @@
                 $(document).on('click', '.bc-btn-add', function (e) {
                     e.preventDefault();
 
-                    let $previous = $(this).prev();
+                    let $previous = $(this).prev().find('.bc-multiple').last();
 
                     let element = cloneElement($previous);
 

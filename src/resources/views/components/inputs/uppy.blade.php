@@ -48,7 +48,6 @@
 </div>
 
 @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.2/Sortable.js"></script>
     <script>
         var uploaded{{ $key }} = document.getElementById("uppy-uploaded-{{ $key }}");
         var sortableUploaded{{ $key }} = Sortable.create(uploaded{{ $key }}, {
