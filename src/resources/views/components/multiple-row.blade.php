@@ -7,7 +7,7 @@
                 type="button"
                 title="{{ __('blade-components::components.sort_row') }}"
             >
-                <x-heroicon-o-menu height="16" width="16" />
+                <x-heroicon-o-selector height="16" width="16" />
             </button>
 
             <button
@@ -15,7 +15,7 @@
                 type="button"
                 title="{{ __('blade-components::components.sort_row') }}"
             >
-                <x-heroicon-o-menu height="16" width="16" /> Sort
+                <x-heroicon-o-selector height="16" width="16" /> Sort
             </button>
         </div>
     @endif

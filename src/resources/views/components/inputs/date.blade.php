@@ -31,11 +31,11 @@
                 @if ($time)
                     enableTime: true,
                     dateFormat: "Y-m-d H:i",
-                    altFormat: "F j, Y - H:i",
+                    altFormat: "j. F Y - H:i",
                     time_24hr: true,
                 @else
                     dateFormat: "Y-m-d",
-                    altFormat: "F j, Y",
+                    altFormat: "j. F Y`",
                 @endif
             })
         });

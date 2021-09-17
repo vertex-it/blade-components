@@ -3,7 +3,7 @@
 
 <div class="relative">
     <div class="absolute left-0 top-0 bottom-0 p-3 rounded-bl rounded-tl">
-        <x-heroicon-o-calendar height="16" width="16" class="text-gray-400" />
+        <x-heroicon-o-clock height="16" width="16" class="text-gray-400" />
     </div>
     <input
         class="form-input bc-time pl-9"
