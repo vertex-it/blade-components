@@ -9,7 +9,7 @@
         @if (Str::contains($slot, 'bc-multiple'))
             {{ $slot }}
         @else
-            <x-multiple-row>
+            <x-multiple-row sortable>
                 {{ $slot }}
             </x-multiple-row>
         @endif

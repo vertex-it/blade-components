@@ -1,8 +1,10 @@
 <div class="flex flex-wrap lg:flex-nowrap gap-x-2 items-center bc-multiple">
     {{ $slot }}
-    <div class="cursor-move btn btn-transparent btn-sm py-3 shadow-none font-normal bc-sort-row hidden lg:block">
-        <x-heroicon-o-menu height="16" width="16" />
-    </div>
+    @if ($sortable)
+        <div class="cursor-move btn btn-transparent btn-sm py-3 shadow-none font-normal bc-sort-row hidden lg:block">
+            <x-heroicon-o-menu height="16" width="16" />
+        </div>
+    @endif
     <div>
         <button
             class="btn btn-white btn-sm text-red-500 btn-has-icon shadow-sm font-normal bc-delete-row lg:hidden mb-6"
