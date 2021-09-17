@@ -1,11 +1,25 @@
 <div class="flex flex-wrap lg:flex-nowrap gap-x-2 items-center bc-multiple">
     {{ $slot }}
     @if ($sortable)
-        <div class="cursor-move btn btn-transparent btn-sm py-3 shadow-none font-normal bc-sort-row hidden lg:block">
-            <x-heroicon-o-menu height="16" width="16" />
+        <div class="bc-sort-row">
+            <button
+                class="cursor-move btn btn-transparent btn-sm py-3 shadow-none font-normal hidden lg:block"
+                type="button"
+                title="{{ __('blade-components::components.sort_row') }}"
+            >
+                <x-heroicon-o-menu height="16" width="16" />
+            </button>
+
+            <button
+                class="cursor-move btn btn-white btn-sm btn-has-icon shadow-sm font-normal lg:hidden mb-6"
+                type="button"
+                title="{{ __('blade-components::components.sort_row') }}"
+            >
+                <x-heroicon-o-menu height="16" width="16" /> Sort
+            </button>
         </div>
     @endif
-    <div>
+    <div class="btn-group-delete-row">
         <button
             class="btn btn-white btn-sm text-red-500 btn-has-icon shadow-sm font-normal bc-delete-row lg:hidden mb-6"
             type="button"

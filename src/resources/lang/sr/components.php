@@ -10,6 +10,7 @@ return [
     'delete_button' => 'Obrišite',
     'sort_button' => 'Sortirajte',
     'delete_row' => 'Obrišite ovaj red',
+    'sort_row' => 'Prevucite da promenite redosled',
 
     'monday' => 'Ponedjeljak',
     'tuesday' => 'Utorak',

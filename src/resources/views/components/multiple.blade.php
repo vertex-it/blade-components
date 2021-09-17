@@ -15,7 +15,7 @@
         @endif
     </div>
 
-    <button class="btn btn-white shadow-sm btn-sm btn-has-icon font-normal bc-btn-add lg:-mt-4" type="button">
+    <button class="btn btn-white shadow-sm btn-sm btn-has-icon font-normal bc-btn-add bc-btn-add-{{ $id }} lg:-mt-4" type="button">
         <x-heroicon-o-plus height="16" width="16" />
         {{ __('blade-components::components.add_more') }}
     </button>
@@ -23,11 +23,21 @@
 
 @push('scripts')
     <script>
-        Sortable.create(document.getElementById('{{ $id }}'), {
-            animation: 150,
-            group: '{{ $label }}',
-            direction: 'vertical',
-            handle: '.bc-sort-row',
+        if ($('#{{ $id }}').find('.bc-multiple').length === 1) {
+            $('#{{ $id }}').find('.btn-group-delete-row').addClass('hidden')
+            $('#{{ $id }}').find('.bc-sort-row').addClass('hidden')
+        }
+
+        $(document).on('click', '.bc-btn-add-{{ $id }}', function (e) {
+            $('#{{ $id }}').find('.btn-group-delete-row').removeClass('hidden')
+            $('#{{ $id }}').find('.bc-sort-row').removeClass('hidden')
+
+            Sortable.create(document.getElementById('{{ $id }}'), {
+                animation: 150,
+                group: '{{ $label }}',
+                direction: 'vertical',
+                handle: '.bc-sort-row',
+            })
         })
     </script>
 @endpush

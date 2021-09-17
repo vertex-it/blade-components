@@ -9,6 +9,7 @@ return [
     'delete_button' => 'Delete',
     'sort_button' => 'Sort',
     'delete_row' => 'Delete this row',
+    'sort_row' => 'Drag to sort this row',
 
     'monday' => 'Monday',
     'tuesday' => 'Tuesday',
