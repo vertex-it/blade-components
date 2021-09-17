@@ -15,7 +15,10 @@
         @endif
     </div>
 
-    <button class="btn btn-white shadow-sm btn-sm btn-has-icon font-normal bc-btn-add bc-btn-add-{{ $id }} lg:-mt-4" type="button">
+    <button
+        class="btn btn-white shadow-sm btn-sm btn-has-icon font-normal bc-btn-add bc-btn-add-{{ $id }} lg:-mt-4"
+        type="button"
+    >
         <x-heroicon-o-plus height="16" width="16" />
         {{ __('blade-components::components.add_more') }}
     </button>
@@ -47,40 +50,47 @@
         <script>
             $(document).ready(function () {
                 $(document).on('click', '.bc-btn-add', function (e) {
-                    e.preventDefault();
+                    e.preventDefault()
 
-                    let $previous = $(this).prev().find('.bc-multiple').last();
+                    let $previous = $(this).prev().find('.bc-multiple').last()
 
-                    let element = cloneElement($previous);
+                    let element = cloneElement($previous)
 
-                    emptyValuesFromElement(element);
-                    incrementInputArrayKeys(element, $(this).parents('.bc-row').find('.bc-multiple').length);
+                    emptyValuesFromElement(element)
+                    incrementInputArrayKeys(element, $(this).parents('.bc-row').find('.bc-multiple').length)
 
-                    $previous.after(element);
+                    $previous.after(element)
 
-                    reinitializeSelectize();
-                    initTimePicker($previous.next().selector);
-                });
+                    reinitializeSelectize()
+                    initTimePicker($previous.next().selector)
+                })
 
                 $(document).on('click', '.bc-delete-row', function (e) {
-                    e.preventDefault();
+                    e.preventDefault()
 
-                    let rows = $(this).parents('.bc-row').find('.bc-multiple').length;
+                    let rows = $(this).parents('.bc-row').find('.bc-multiple').length
 
                     if (rows < 2) {
-                        return;
+                        return
                     }
 
-                    $(this).parents('.bc-multiple').remove();
-                });
-            });
+                    rows = $(this).closest('.bc-row').find('.bc-multiple').length
+
+                    if (rows < 3) {
+                        $(this).closest('.bc-row').find('.btn-group-delete-row').addClass('hidden')
+                        $(this).closest('.bc-row').find('.bc-sort-row').addClass('hidden')
+                    }
+
+                    $(this).parents('.bc-multiple').remove()
+                })
+            })
 
             function cloneElement($el) {
                 $el.find('select.bc-select').each(function (i) {
                     if ($(this)[0].selectize) {
-                        var value = $(this).val();
-                        $(this)[0].selectize.destroy();
-                        $(this).val(value);
+                        var value = $(this).val()
+                        $(this)[0].selectize.destroy()
+                        $(this).val(value)
                     }
                 })
 
@@ -89,17 +99,17 @@
 
             function emptyValuesFromElement(element) {
                 // Todo: Add support for checkbox, etc.
-                element.find('input, textarea').val('');
-                element.find('option:selected').attr('selected', false);
-                element.find('option:disabled').attr('selected', true);
+                element.find('input, textarea').val('')
+                element.find('option:selected').attr('selected', false)
+                element.find('option:disabled').attr('selected', true)
             }
 
             function reinitializeSelectize() {
                 $('select.bc-select').each(function (i) {
                     if (! $(this)[0].selectize) {
-                        $(this).selectize(selectizeDefaultConfig);
+                        $(this).selectize(selectizeDefaultConfig)
                     }
-                });
+                })
             }
 
             function incrementInputArrayKeys(element, numberOfRows) {

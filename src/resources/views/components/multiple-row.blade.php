@@ -28,7 +28,7 @@
         </button>
 
         <button
-            class="btn btn-transparent shadow-none font-normal bc-delete-row hidden lg:block py-3 text-red-500"
+            class="btn btn-transparent btn-sm shadow-none font-normal bc-delete-row hidden lg:block py-3 text-red-500"
             type="button"
             title="{{ __('blade-components::components.delete_row') }}"
         >
