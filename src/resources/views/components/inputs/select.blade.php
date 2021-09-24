@@ -43,7 +43,7 @@
                 };
 
                 $(document).ready(function () {
-                    $('select.bc-select').selectize(selectizeDefaultConfig);
+                    $('select.selectize').selectize(selectizeDefaultConfig);
                 });
             </script>
         @endpush

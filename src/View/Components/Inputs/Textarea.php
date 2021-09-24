@@ -16,9 +16,10 @@ class Textarea extends BaseInputComponent
         $required = null,
         $comment = null,
         $inline = null,
-        $richText = null
+        $richText = null,
+        $width = null,
     ) {
-        parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline);
+        parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline, $width);
 
         $this->richText = $richText;
     }

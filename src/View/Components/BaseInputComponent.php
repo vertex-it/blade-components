@@ -15,6 +15,7 @@ abstract class BaseInputComponent extends Component
     public $comment;
     public $inline;
     public $id;
+    public $width;
 
     // FIX: Implement columns in all components
     // IDEA: Maybe we don't need all properties mapped, for example 'columns'
@@ -25,7 +26,8 @@ abstract class BaseInputComponent extends Component
         $value = null,
         $required = null,
         $comment = null,
-        $inline = null
+        $inline = null,
+        $width = null
     ) {
         $this->name = $name;
         $this->label = $label;
@@ -35,6 +37,7 @@ abstract class BaseInputComponent extends Component
         $this->comment = $comment;
         $this->inline = $inline;
         $this->id = Str::random(6);
+        $this->width = $width;
     }
 
     abstract public function render();
