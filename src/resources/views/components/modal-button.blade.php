@@ -1,5 +1,5 @@
 <button
-    class="btn {{ $buttonClass ?? 'btn-primary' }}"
+    class="btn {{ $buttonClass ?? 'btn-transparent' }} shadow-none"
     data-toggle="modal"
     data-content="{!! $content !!}"
     data-target="#{{ $id }}"

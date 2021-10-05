@@ -35,7 +35,7 @@
                     time_24hr: true,
                 @else
                     dateFormat: "Y-m-d",
-                    altFormat: "j. F Y`",
+                    altFormat: "j. F Y",
                 @endif
             })
         });
