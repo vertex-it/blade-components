@@ -19,7 +19,6 @@ class WorkTime extends BaseInputComponent
     ) {
         parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline);
 
-        // dd($this->getPreparedValue($value));
         $this->preparedValue = $this->getPreparedValue($value);
     }
 
@@ -27,21 +26,25 @@ class WorkTime extends BaseInputComponent
     {
         $old = request()->old($this->name);
 
-    if (isset($old['monday'])) {
-            $this->preparedValue = prepareMultipleInputData(request()->old($this->name));
-        } else if (isset($value['monday'])) {
-            return $value;
-        } else {
-            return [
-                'monday' => [],
-                'tuesday' => [],
-                'wednesday' => [],
-                'thursday' => [],
-                'friday' => [],
-                'saturday' => [],
-                'sunday' => [],
-            ];
+        if (isset($old['monday'])) {
+            return array_map(function ($day) {
+                return prepareMultipleInputData($day);
+            }, $old);
         }
+
+        if (isset($value['monday'])) {
+            return $value;
+        }
+
+        return [
+            'monday' => [],
+            'tuesday' => [],
+            'wednesday' => [],
+            'thursday' => [],
+            'friday' => [],
+            'saturday' => [],
+            'sunday' => [],
+        ];
     }
 
     public function render()
