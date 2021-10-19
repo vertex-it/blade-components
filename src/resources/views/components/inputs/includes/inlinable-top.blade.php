@@ -1,1 +1,2 @@
-<div class="form-group {{ $width }}">
+<div class="form-group @if(isset($fullWidth)) w-full @endif">
+

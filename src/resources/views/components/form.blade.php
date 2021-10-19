@@ -13,7 +13,7 @@
 
     <div class="form-content">{{ $slot }}</div>
 
-    <button class="btn btn-primary">
+    <button class="btn btn-primary {{ $buttonClasses }}">
         {{ $buttonText ?? 'Submit' }}
     </button>
 </form>
