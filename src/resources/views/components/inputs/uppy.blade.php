@@ -1,4 +1,23 @@
-<div class="form-group @error($name) has-error has-danger @enderror">
+<style>
+    .uploaded-container {
+        height: 150px;
+    }
+
+    .uploaded-container>img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .droppable-trash {
+        padding: 0.5em;
+    }
+
+    .droppable-trash img {
+        opacity: .2;
+    }
+</style>
+<div class="form-group w-full @error($name) has-error has-danger @enderror">
     @include('blade-components::components.inputs.includes.label')
 
     <div>
@@ -20,12 +39,12 @@
 
     <input name="{{ $name }}[]" type="hidden" value="">
 
-    <div class="flex" id="uppy-uploaded-{{ $key }}">
+    <div class="flex flex-wrap justify-start items-center -m-2" id="uppy-uploaded-{{ $key }}">
         @foreach(old($name, $value) ?? [] as $url)
             @if($url)
-                <div class="col-lg-2 col-md-3 col-sm-4 mb-4 uploaded-container">
+                <div class="flex-1 uploaded-container">
                     @if(in_array(pathinfo($url, PATHINFO_EXTENSION), ['jpg', 'jpeg']))
-                        <img class="rounded img-thumbnail img-fluid" src="{{ $url }}" />
+                        <img class="p-1 border border-green-400 rounded-md" src="{{ $url }}"  alt=""/>
                     @else
                         <a href="{{ $url }}" target="_blank" class="rounded" rel="noopener noreferrer">
                             <i class="os-icon os-icon-documents-03"></i>
@@ -36,9 +55,10 @@
             @endif
         @endforeach
     </div>
+    <div class="mb-2"></div>
 
     <div
-        class="flex droppable-trash"
+        class="flex droppable-trash mt-4 border-dashed border-2 border-gray-300"
         id="uppy-removed-{{ $key }}"
         style="{{ is_array(old($name, $value)) ? '' : 'display: none;' }}"
     ></div>
@@ -153,7 +173,7 @@
             $('#uppy-removed-{{ $key }}').show();
 
             if (isImage(response.body)) {
-                var display = '<img class="rounded img-thumbnail img-fluid border-success" src="' + response.body + '" />';
+                var display = '<img class="rounded" src="' + response.body + '" alt="" style="width: inherit;" />';
             } else {
                 var display = '<a href="' + response.body +
                     '" target="_blank" class="rounded border-success" rel="noopener noreferrer">' +
@@ -164,7 +184,7 @@
             }
 
             $('#uppy-uploaded-{{ $key }}').append(
-                '<div class="col-lg-2 col-md-3 col-sm-4 mb-4 uploaded-container">' +
+                '<div class="uploaded-container cursor-move m-2">' +
                     display +
                     '<input name="{{ $name }}[]" type="hidden" value="' + response.body + '">' +
                 '</div>'
