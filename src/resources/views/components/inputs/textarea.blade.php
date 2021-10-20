@@ -1,36 +1,39 @@
-<div class="form-group">
-    @include('blade-components::components.inputs.includes.label')
+@include('blade-components::components.inputs.includes.inlinable-top')
+@include('blade-components::components.inputs.includes.label')
 
-    <textarea
-        class="{{ $richText ? 'tinymce' : 'form-control' }} bc-textarea"
-        id="{{ $getId }}"
-        name="{{ $name }}"
-        rows="7"
-        placeholder="{{ $getPlaceholder() }}"
-        {{ ! $richText ? $outputRequired() : '' }}
-        {{ $attributes }}
-    >{!!
-        old($name, $value)
-    !!}</textarea>
+<textarea
+    class="{{ $richText ? 'tinymce' : 'form-input' }}"
+    id="{{ $getId }}"
+    name="{{ $name }}"
+    rows="7"
+    placeholder="{{ $getPlaceholder() }}"
+    {{ ! $richText ? $outputRequired() : '' }}
+    {{ $attributes }}
+>{!!
+    old($name, $value)
+!!}</textarea>
 
-    @include('blade-components::components.inputs.includes.comment')
-    @include('blade-components::components.inputs.includes.error')
-</div>
+@include('blade-components::components.inputs.includes.comment')
+@include('blade-components::components.inputs.includes.error')
+@include('blade-components::components.inputs.includes.inlinable-bottom')
 
-@if($richText)
+@if ($richText)
     @once
         @push ('scripts')
             <script>
                 $(document).ready(function () {
                     tinymce.init({
-                        selector: '.bc-textarea',
-                        plugins: 'autoresize advlist hr charmap fullscreen insertdatetime image link preview searchreplace visualblocks wordcount help lists code',
-                        toolbar: 'fullscreen | undo redo | bold italic forecolor backcolor styleselect | numlist bullist | alignleft aligncenter alignright alignjustify | link insertfile image | a11ycheck preview code visualblocks wordcount | searchreplace | help',
+                        selector: '.tinymce',
+                        plugins: 'autoresize advlist charmap fullscreen image link preview searchreplace visualblocks wordcount help lists code',
+                        toolbar: 'fullscreen | undo redo | bold italic underline strikethrough | forecolor backcolor | numlist bullist | alignleft aligncenter alignright alignjustify | link image | preview code visualblocks wordcount | searchreplace | help',
+                        menubar: false,
                         advlist_bullet_styles: "square",
                         automatic_uploads: true,
                         branding: false,
-                        max_height: 600,
+                        resize: true,
                         min_height: 400,
+                        max_height: 900,
+                        content_style: 'img { max-width: 100%; height: auto; }',
                         paste_data_images : true,
                         file_picker_types: 'image',
                         relative_urls: false,

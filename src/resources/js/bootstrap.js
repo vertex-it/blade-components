@@ -46,7 +46,3 @@ window.XHRUpload = require('@uppy/xhr-upload');
 window.Dashboard = require('@uppy/dashboard');
 require('@uppy/core/dist/style.css');
 require('@uppy/dashboard/dist/style.css');
-
-// Bootstrap Toggle
-require('bootstrap4-toggle');
-require('bootstrap4-toggle/css/bootstrap4-toggle.min.css');

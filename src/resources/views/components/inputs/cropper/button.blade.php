@@ -2,10 +2,13 @@
     <button
         class="
             btn
-            btn-light
+            btn-white
+            btn-sm
+            font-normal
+            shadow-sm
             cropper-ar
             @if($aspectRatioX === $x && $aspectRatioY === $y)
-                font-weight-bold
+                font-bold
             @endif
         "
         data-aspect-ratio-x="{{ $x }}"

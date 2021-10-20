@@ -1,15 +1,38 @@
-<div class="row bc-multiple">
+<div class="flex flex-wrap lg:flex-nowrap gap-x-2 items-center bc-multiple">
     {{ $slot }}
-    <div class="col-lg-1 col-xs-12">
-        <div class="form-group">
-            <button class="btn btn-light btn-block mt-2 bc-delete-row d-block d-lg-none" type="button">
-                <x-heroicon-o-trash height="20px" width="20px" class="float-left mr-1" />
-                {{ __('blade-components::components.delete_button') }}
+    @if ($sortable)
+        <div class="bc-sort-row">
+            <button
+                class="cursor-move btn btn-transparent btn-sm py-3 shadow-none font-normal hidden lg:block"
+                type="button"
+                title="{{ __('blade-components::components.sort_row') }}"
+            >
+                <x-heroicon-o-selector height="16" width="16" />
             </button>
 
-            <button class="btn btn-light mt-4 bc-delete-row d-none d-lg-block" type="button">
-                <x-heroicon-o-trash height="20px" width="20px" class="float-left" />
+            <button
+                class="cursor-move btn btn-white btn-sm btn-has-icon shadow-sm font-normal lg:hidden mb-6"
+                type="button"
+                title="{{ __('blade-components::components.sort_row') }}"
+            >
+                <x-heroicon-o-selector height="16" width="16" /> Sort
             </button>
         </div>
+    @endif
+    <div class="btn-group-delete-row">
+        <button
+            class="btn btn-white btn-sm text-red-500 btn-has-icon shadow-sm font-normal bc-delete-row lg:hidden mb-6"
+            type="button"
+        >
+            <x-heroicon-o-trash height="16" width="16" /> Delete
+        </button>
+
+        <button
+            class="btn btn-transparent btn-sm shadow-none font-normal bc-delete-row hidden lg:block py-3 text-red-500"
+            type="button"
+            title="{{ __('blade-components::components.delete_row') }}"
+        >
+            <x-heroicon-o-x height="16" width="16" />
+        </button>
     </div>
 </div>

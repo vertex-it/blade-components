@@ -1,56 +1,73 @@
-<div class="form-group row @error($name) has-error has-danger @enderror">
-    <div class="col-12">
-        @include('blade-components::components.inputs.includes.label')
+<style>
+    .uploaded-container {
+        height: 150px;
+    }
 
-        <div>
-            <button
-                class="btn btn-light {{ is_array(old($name, $value)) ? 'mb-4' : '' }}"
-                id="uppy-modal-{{ $key }}"
-                title="{{ __('blade-components::components.add_more') }}"
-                {{-- type="button" --}}
-            >
+    .uploaded-container>img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .droppable-trash {
+        padding: 0.5em;
+    }
+
+    .droppable-trash img {
+        opacity: .2;
+    }
+</style>
+<div class="form-group w-full @error($name) has-error has-danger @enderror">
+    @include('blade-components::components.inputs.includes.label')
+
+    <div>
+        <button
+            class="btn btn-white btn-has-icon btn-sm  shadow-sm font-normal {{ is_array(old($name, $value)) ? 'mb-4' : '' }}"
+            id="uppy-modal-{{ $key }}"
+            title="{{ __('blade-components::components.add_more') }}"
+             type="button"
+        >
 {{--                TODO: Document blade-ui-kit/blade-heroicons dependency--}}
-                <x-heroicon-o-plus height="20px" width="20px" class="float-left mr-1" />
-                {{ __('blade-components::components.add_more') }}
-            </button>
-        </div>
-
-        <div class="uppy-{{ $key }}">
-            <div id="drag-drop-area-{{ $key }}"></div>
-        </div>
-
-        <input name="{{ $name }}[]" type="hidden" value="">
-
-        <div class="row flex" id="uppy-uploaded-{{ $key }}">
-            @foreach(old($name, $value) ?? [] as $url)
-                @if($url)
-                    <div class="col-lg-2 col-md-3 col-sm-4 mb-4 uploaded-container">
-                        @if(in_array(pathinfo($url, PATHINFO_EXTENSION), ['jpg', 'jpeg']))
-                            <img class="rounded img-thumbnail img-fluid" src="{{ $url }}" />
-                        @else
-                            <a href="{{ $url }}" target="_blank" class="rounded" rel="noopener noreferrer">
-                                <i class="os-icon os-icon-documents-03"></i>
-                            </a>
-                        @endif
-                        <input name="{{ $name }}[]" type="hidden" value="{{ $url }}">
-                    </div>
-                @endif
-            @endforeach
-        </div>
-
-        <div
-            class="row flex droppable-trash"
-            id="uppy-removed-{{ $key }}"
-            style="{{ is_array(old($name, $value)) ? '' : 'display: none;' }}"
-        ></div>
-
-        @include('blade-components::components.inputs.includes.comment')
-        @include('blade-components::components.inputs.includes.error')
+            <x-heroicon-o-plus height="16" width="16" />
+            {{ __('blade-components::components.add_more') }}
+        </button>
     </div>
+
+    <div class="uppy-{{ $key }}">
+        <div id="drag-drop-area-{{ $key }}"></div>
+    </div>
+
+    <input name="{{ $name }}[]" type="hidden" value="">
+
+    <div class="flex flex-wrap justify-start items-center -m-2" id="uppy-uploaded-{{ $key }}">
+        @foreach(old($name, $value) ?? [] as $url)
+            @if($url)
+                <div class="flex-1 uploaded-container">
+                    @if(in_array(pathinfo($url, PATHINFO_EXTENSION), ['jpg', 'jpeg']))
+                        <img class="p-1 border border-green-400 rounded-md" src="{{ $url }}"  alt=""/>
+                    @else
+                        <a href="{{ $url }}" target="_blank" class="rounded" rel="noopener noreferrer">
+                            <i class="os-icon os-icon-documents-03"></i>
+                        </a>
+                    @endif
+                    <input name="{{ $name }}[]" type="hidden" value="{{ $url }}">
+                </div>
+            @endif
+        @endforeach
+    </div>
+    <div class="mb-2"></div>
+
+    <div
+        class="flex droppable-trash mt-4 border-dashed border-2 border-gray-300"
+        id="uppy-removed-{{ $key }}"
+        style="{{ is_array(old($name, $value)) ? '' : 'display: none;' }}"
+    ></div>
+
+    @include('blade-components::components.inputs.includes.comment')
+    @include('blade-components::components.inputs.includes.error')
 </div>
 
 @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.2/Sortable.js"></script>
     <script>
         var uploaded{{ $key }} = document.getElementById("uppy-uploaded-{{ $key }}");
         var sortableUploaded{{ $key }} = Sortable.create(uploaded{{ $key }}, {
@@ -79,7 +96,7 @@
             e.preventDefault();
         });
 
-        const uppy{{ $key }} = Uppy().use(Dashboard, {
+        const uppy{{ $key }} = new Uppy().use(Dashboard, {
             inline: false,
             target: '#drag-drop-area-{{ $key }}',
             trigger: '#uppy-modal-{{ $key }}',
@@ -156,7 +173,7 @@
             $('#uppy-removed-{{ $key }}').show();
 
             if (isImage(response.body)) {
-                var display = '<img class="rounded img-thumbnail img-fluid border-success" src="' + response.body + '" />';
+                var display = '<img class="rounded" src="' + response.body + '" alt="" style="width: inherit;" />';
             } else {
                 var display = '<a href="' + response.body +
                     '" target="_blank" class="rounded border-success" rel="noopener noreferrer">' +
@@ -167,7 +184,7 @@
             }
 
             $('#uppy-uploaded-{{ $key }}').append(
-                '<div class="col-lg-2 col-md-3 col-sm-4 mb-4 uploaded-container">' +
+                '<div class="uploaded-container cursor-move m-2">' +
                     display +
                     '<input name="{{ $name }}[]" type="hidden" value="' + response.body + '">' +
                 '</div>'

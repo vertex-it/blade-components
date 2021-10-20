@@ -2,7 +2,7 @@
 @include('blade-components::components.inputs.includes.label')
 
 <select
-    class="{{ $selectize ? 'bc-select' : 'form-control' }}"
+    class="{{ $selectize ? 'selectize' : 'form-input' }}"
     name="{{ $name . ($multiple ? '[]' : '') }}"
     id="{{ $getId }}"
     {{ $multiple ? ' multiple ' : '' }}
@@ -43,7 +43,7 @@
                 };
 
                 $(document).ready(function () {
-                    $('select.bc-select').selectize(selectizeDefaultConfig);
+                    $('select.selectize').selectize(selectizeDefaultConfig);
                 });
             </script>
         @endpush

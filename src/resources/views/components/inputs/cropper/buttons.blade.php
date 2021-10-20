@@ -1,21 +1,19 @@
-<div class="col-lg-8 js-cropper-tools" data-name="{{ $name }}" style="display: none;">
-    <div class="row">
-        <div class="col-12" style="height: 400px;">
-            <img id="cropper-image-{{ $name }}" style="height: 100%;">
-        </div>
+<div class="js-cropper-tools mt-6" data-name="{{ $name }}" style="display: none;">
+    <div style="height: 500px;">
+        <img id="cropper-image-{{ $name }}" style="height: 100%;">
     </div>
 
     <div
-        class="row d-flex justify-content-center mt-3 cropper-details-{{ $name }} mb-4"
+        class="flex justify-center mt-3 cropper-details-{{ $name }} mb-10"
         data-name="{{ $name }}"
     >
-        <div class="mr-4 view-modes">
-            <button class="btn btn-light cropper-vm font-weight-bold" data-value="0">
-                {{ __('Expand') }}
+        <div class="mr-5 view-modes">
+            <button class="btn btn-white btn-sm shadow-sm font-bold cropper-vm" data-value="1">
+                {{ __('Keep') }}
             </button>
 
-            <button class="btn btn-light cropper-vm" data-value="1">
-                {{ __('Keep') }}
+            <button class="btn btn-white btn-sm shadow-sm font-normal cropper-vm" data-value="0">
+                {{ __('Expand') }}
             </button>
         </div>
 
@@ -31,45 +29,45 @@
         </div>
     </div>
 
-    <div class="row row-xs mb-4">
-        <div class="col-md-3">
-            <label class="az-content-{{ $name }} tx-11 tx-medium tx-gray-600">
+    <div class="flex space-x-3 justify-center mb-5 text-gray-600 text-sm">
+        <div>
+            <label class="form-label az-content-{{ $name }}" for="cropper-{{ $name }}-x">
                 X
             </label>
 
-            <input class="form-control cropper-input-details cropper-{{ $name }}-x" type="number">
+            <input class="form-input cropper-input-details cropper-{{ $name }}-x" id="cropper-{{ $name }}-x" type="number">
         </div>
 
-        <div class="col-md-3 mg-t-10 mg-md-t-0">
-            <label class="az-content-{{ $name }} tx-11 tx-medium tx-gray-600">
+        <div>
+            <label class="form-label az-content-{{ $name }}" for="cropper-{{ $name }}-y">
                 Y
             </label>
 
-            <input class="form-control cropper-input-details cropper-{{ $name }}-y" type="number">
+            <input class="form-input cropper-input-details cropper-{{ $name }}-y" id="cropper-{{ $name }}-y" type="number">
         </div>
 
-        <div class="col-md-3 mg-t-10 mg-md-t-0">
-            <label class="az-content-{{ $name }} tx-11 tx-medium tx-gray-600">
+        <div>
+            <label class="form-label az-content-{{ $name }}" for="cropper-{{ $name }}-height">
                 {{ __('Height') }} (px)
             </label>
 
-            <input class="form-control cropper-input-details cropper-{{ $name }}-height" type="number">
+            <input class="form-input cropper-input-details cropper-{{ $name }}-height" id="cropper-{{ $name }}-height" type="number">
         </div>
 
-        <div class="col-md-3 mg-t-10 mg-md-t-0">
-            <label class="az-content-{{ $name }} tx-11 tx-medium tx-gray-600">
+        <div>
+            <label class="form-label az-content-{{ $name }}" for="cropper-{{ $name }}-width">
                 {{ __('Width') }} (px)
             </label>
 
-            <input class="form-control cropper-input-details cropper-{{ $name }}-width" type="number">
+            <input class="form-input cropper-input-details cropper-{{ $name }}-width" id="cropper-{{ $name }}-width" type="number">
         </div>
     </div>
 
-    <div class="row mt-3">
-        <div class="col-12 text-center">
+    <div class="mt-3">
+        <div class="text-center">
             <button
                 id="btn-crop-{{ $name }}"
-                class="btn btn-secondary"
+                class="btn btn-black"
                 data-name="{{ $name }}"
                 type="button"
             >

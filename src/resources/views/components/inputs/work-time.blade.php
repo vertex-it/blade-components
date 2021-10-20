@@ -9,11 +9,11 @@
     >
         <button
             id="apply_to_all_{{ $name }}"
-            class="btn btn-primary btn-sm mb-2"
+            class="btn btn-primary btn-sm btn-has-icon mb-6"
             title="Primjenite na sve dane"
             type="button"
         >
-            <i class="os-icon os-icon-grid-18"></i> Primjenite na sve dane
+            <x-heroicon-o-refresh height="16" width="16"/> Primjenite na sve dane
         </button>
     </x-inputs.work-time-day>
 

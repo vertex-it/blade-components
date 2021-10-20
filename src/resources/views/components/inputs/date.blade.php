@@ -1,14 +1,12 @@
 @include('blade-components::components.inputs.includes.inlinable-top')
 @include('blade-components::components.inputs.includes.label')
 
-<div class="input-group">
-    <div class="input-group-prepend">
-        <div class="input-group-text">
-            <x-heroicon-o-calendar height="20px" width="20px" class="float-left mr-1" />
-        </div>
+<div class="relative">
+    <div class="absolute left-0 top-0 bottom-0 p-3 rounded-bl rounded-tl">
+        <x-heroicon-o-calendar height="16" width="16" class="text-gray-400" />
     </div>
     <input
-        class="form-control"
+        class="form-input pl-9"
         id="{{ $getId }}"
         name="{{ $name }}"
         placeholder="{{ $getPlaceholder() }}"
@@ -30,16 +28,16 @@
                 altInput: true,
                 weekNumbers: true,
                 allowInput: true,
-                @if($time)
-                enableTime: true,
-                dateFormat: "Y-m-d H:i",
-                altFormat: "F j, Y - H:i",
-                time_24hr: true,
+                @if ($time)
+                    enableTime: true,
+                    dateFormat: "Y-m-d H:i",
+                    altFormat: "j. F Y - H:i",
+                    time_24hr: true,
                 @else
-                dateFormat: "Y-m-d",
-                altFormat: "F j, Y",
+                    dateFormat: "Y-m-d",
+                    altFormat: "j. F Y",
                 @endif
-            });
+            })
         });
     </script>
 @endpush

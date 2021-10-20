@@ -1,5 +1,5 @@
 @if($comment)
-    <div class="help-block form-text text-muted form-control-feedback">
+    <div class="form-input-comment">
         {!! $comment !!}
     </div>
 @endif

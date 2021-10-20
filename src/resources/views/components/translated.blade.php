@@ -1,21 +1,33 @@
-<ul class="form-group nav nav-tabs mb-3 mt-4 justify-content-center">
-    @foreach ($languages as $language)
-        <li class="nav-item">
-            <a
-                class="nav-link {{ $loop->first ? 'active' : '' }}"
-                data-toggle="tab"
-                href="#tab_{{ Str::lower($language) }}_{{ $id }}"
-            >
+<div class="tab-group">
+    <div class="tabs">
+        @foreach ($languages as $language)
+            <button class="tab-item {{ $loop->first ? 'active' : '' }}" data-href="#tab_{{ Str::lower($language) }}_{{ $id }}">
                 {{ Str::upper($language) }}
-            </a>
-        </li>
-    @endforeach
-</ul>
+            </button>
+        @endforeach
+    </div>
 
-<div class="form-group tab-content mb-4">
-    @foreach (['mne', 'en'] as $language)
-        <div class="tab-pane {{ $loop->first ? 'active' : '' }}" id="tab_{{ Str::lower($language) }}_{{ $id }}">
-            {{ ${$language} }}
-        </div>
-    @endforeach
+    <div class="tab-content mb-4">
+        @foreach ($languages as $language)
+            <div class="tab-pane {{ $loop->first ? 'active' : '' }}" id="tab_{{ Str::lower($language) }}_{{ $id }}">
+                {{ ${$language} }}
+            </div>
+        @endforeach
+    </div>
 </div>
+
+@once
+    @push('scripts')
+        <script>
+            $('.tab-item').on('click', function (e) {
+                e.preventDefault()
+
+                $(this).parent().find('.active').removeClass('active')
+                $(this).addClass('active')
+
+                $(this).closest('.tab-group').find('.tab-pane.active').removeClass('active')
+                $($(this).data('href')).addClass('active')
+            })
+        </script>
+    @endpush
+@endonce

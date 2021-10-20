@@ -1,23 +1,17 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="{{ route('admin.index') }}">
-                {{ config('app.name') }}
-            </a>
-        </li>
+<div class="breadcrumbs">
+    <a href="{{ route('admin.index') }}" class="item item-link">
+        {{ config('app.name') }}
+    </a>
 
-        @foreach ($routes as $route)
-            <li class="breadcrumb-item">
-                <a href="{{ $route['url'] }}">
-                    {{ __(ucfirst($route['name'])) }}
-                </a>
-            </li>
-        @endforeach
+    @foreach($routes as $route)
+        <span class="separator">/</span>
+        <a href="{{ $route['url'] }}" class="item item-link">
+            {{ __(ucfirst($route['name'])) }}
+        </a>
+    @endforeach
 
-        @if (Route::currentRouteName() !== 'admin.index')
-            <li class="breadcrumb-item active">
-                @yield('title')
-            </li>
-        @endif
-    </ol>
-</nav>
+    <span class="separator">/</span>
+    <span class="item item-last">
+        @yield('title')
+    </span>
+</div>

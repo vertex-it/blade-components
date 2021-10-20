@@ -10,13 +10,15 @@ class Form extends Component
     public $method;
     public $multipart;
     public $buttonText;
+    public $buttonClasses;
 
-    public function __construct($action, $method = null, $multipart = null, $buttonText = null)
+    public function __construct($action, $method = null, $multipart = null, $buttonText = null, $buttonClasses = null)
     {
         $this->action = $action;
         $this->method = $method;
         $this->multipart = $multipart;
         $this->buttonText = $buttonText;
+        $this->buttonClasses = $buttonClasses;
     }
 
     public function render()
