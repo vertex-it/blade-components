@@ -14,7 +14,7 @@
             </div>
             <div class="modal-footer" style="display: none;">
                 <button type="button" class="m-0 modal-action-btn" id="confirm">
-                    Confirm
+                    {{ __('Confirm') }}
                 </button>
                 <button type="button" class="btn btn-light btn-sm modal-close-btn" id="cancel">
                     {{ __('Cancel') }}
