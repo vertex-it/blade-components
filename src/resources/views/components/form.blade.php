@@ -13,7 +13,9 @@
 
     <div class="form-content">{{ $slot }}</div>
 
-    <button class="btn btn-primary {{ $buttonClasses }}">
-        {{ $buttonText ?? 'Submit' }}
-    </button>
+    @if ($button)
+        <button class="btn btn-primary {{ $buttonClasses }}">
+            {{ $buttonText ?? 'Submit' }}
+        </button>
+    @endif
 </form>

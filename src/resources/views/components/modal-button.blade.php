@@ -10,7 +10,6 @@
         class="{{ $buttonClass . ' ' . 'btn-open-modal' }} modal-btn"
         data-title="{{ $title }}"
         data-content="{{ $content }}"
-        data-target="{{ $id }}"
     >
 @endif
     @if (isset($slot))
