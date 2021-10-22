@@ -1,9 +1,18 @@
-<button
-    class="btn {{ $buttonClass ?? 'btn-transparent' }} shadow-none"
-    data-toggle="modal"
-    data-content="{!! $content !!}"
-    data-target="#{{ $id }}"
->
+@if (isset($confirmButtonClass))
+    <button
+        class="{{ $buttonClass . ' ' . $confirmButtonClass }} modal-btn"
+        data-title="{{ $title }}"
+        data-content="{{ $content }}"
+        data-target="{{ $id }}"
+    >
+@else
+    <button
+        class="{{ $buttonClass . ' ' . 'btn-open-modal' }} modal-btn"
+        data-title="{{ $title }}"
+        data-content="{{ $content }}"
+        data-target="{{ $id }}"
+    >
+@endif
     @if (isset($slot))
         {!! $slot !!}
     @else
