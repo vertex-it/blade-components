@@ -4,6 +4,7 @@
     @if ($multipart)
         enctype="multipart/form-data"
     @endif
+    class="max-w-4xl mx-auto my-10"
 >
     @csrf
 

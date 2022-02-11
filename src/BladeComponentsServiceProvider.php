@@ -29,8 +29,8 @@ class BladeComponentsServiceProvider extends ServiceProvider
             ], 'blade-components-views');
 
             $this->publishes([
-                __DIR__ . '/resources/js/bootstrap.js' => resource_path('js/blade-components-bootstrap.js'),
-            ], 'blade-components-bootstrap-js');
+                __DIR__ . '/resources/js/blade-components.js' => resource_path('js/blade-components.js'),
+            ], 'blade-components-js');
         }
     }
 

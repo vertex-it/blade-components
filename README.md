@@ -57,14 +57,14 @@ npm install jquery sortablejs cropperjs jquery-cropper flatpickr selectize tinym
 
 To start using blade components you will need to add the following to your webpack.mix.js:
 ```js
-mix.js('resources/js/blade-components-bootstrap.js', 'public/js');
+mix.js('resources/js/blade-components.js', 'public/js');
 
 // ...
 
 mix.styles([
     //... css resources
 ]).scripts([
-    'public/js/blade-components-bootstrap.js',
+    'public/js/blade-components.js',
     // ... all other js resources
 ]);
 
