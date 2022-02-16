@@ -1,0 +1,98 @@
+/* BREADCRUMBS START */
+
+.breadcrumbs {
+    @apply flex items-center text-primary text-xs;
+}
+
+.breadcrumbs > .item {
+    @apply mr-3;
+}
+
+.breadcrumbs > .item-link {
+    @apply hover:text-gray-900;
+}
+
+.breadcrumbs > .item-last {
+    @apply text-gray-400;
+}
+
+.breadcrumbs > .separator {
+    @apply mr-3 text-gray-600;
+}
+
+/* BREADCRUMBS END */
+
+/* FORMS START */
+/* TODO Check forms css */
+
+.tabs {
+    @apply border-b border-gray-200 mb-8 flex;
+}
+
+.tabs .tab-item {
+    @apply px-7 py-3 mr-3 text-sm text-gray-400 border-b-2 border-white uppercase hover:border-red-500;
+}
+
+.tabs .tab-item.active {
+    @apply text-red-500 font-medium border-red-500 hover:border-red-600;
+}
+
+.tab-pane {
+    @apply hidden;
+}
+
+.tab-pane.active {
+    @apply block;
+}
+
+.form-inline {
+    @apply flex gap-x-6 flex-wrap lg:flex-nowrap w-full;
+}
+
+.form-group {
+    @apply mb-8 w-full;
+}
+
+.form-inline > .form-group {
+    @apply mb-4 lg:mb-8;
+}
+
+.form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+.form-input, .selectize-input {
+    @apply shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md;
+}
+
+/* Form components - TinyMCE */
+.form-group > div.tox.tox-tinymce {
+    @apply text-gray-800 shadow-sm w-full bg-white border-gray-300 border rounded;
+}
+
+/* Form components - toggle */
+input:checked ~ .dot {
+    @apply transform translate-x-full bg-white;
+}
+input:checked ~ .toggle-background {
+    @apply bg-green-400;
+}
+
+.form-input-comment {
+    @apply text-xs text-gray-400 mt-2;
+}
+
+form fieldset {
+    @apply my-8;
+}
+
+form fieldset legend {
+    @apply block w-full text-primary-500 mb-10 border-b border-gray-200;
+    line-height: 0.1em;
+}
+
+form fieldset legend span {
+    @apply bg-white pr-4;
+}
+
+/* FORMS END */

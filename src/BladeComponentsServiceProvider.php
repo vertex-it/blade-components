@@ -11,11 +11,11 @@ class BladeComponentsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/resources/views', 'blade-components');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'blade-components');
 
-        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
-        $this->loadTranslationsFrom(__DIR__.'/resources/lang/', 'blade-components');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang/', 'blade-components');
 
         BladeComponentsFacade::register();
 
@@ -25,12 +25,13 @@ class BladeComponentsServiceProvider extends ServiceProvider
             ], 'blade-components-config');
 
             $this->publishes([
-                __DIR__ . '/resources/views' => resource_path('views/vendor/blade-components'),
+                __DIR__ . '/../resources/views' => resource_path('views/vendor/blade-components'),
             ], 'blade-components-views');
 
             $this->publishes([
-                __DIR__ . '/resources/js/blade-components.js' => resource_path('js/blade-components.js'),
-            ], 'blade-components-js');
+                __DIR__ . '/../resources/js/blade-components.js' => resource_path('js/vendor/blade-components.js'),
+                __DIR__ . '/../resources/css/blade-components.css' => resource_path('css/vendor/blade-components.css'),
+            ], 'blade-components-assets');
         }
     }
 
