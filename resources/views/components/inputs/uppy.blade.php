@@ -1,6 +1,6 @@
 <style>
     .uploaded-container {
-        height: 150px;
+        height: 120px;
     }
 
     .uploaded-container>img {
@@ -22,7 +22,7 @@
 
     <div>
         <button
-            class="btn btn-white btn-has-icon btn-sm  shadow-sm font-normal {{ is_array(old($name, $value)) ? 'mb-4' : '' }}"
+            class="btn btn-white btn-has-icon shadow-sm font-normal mt-4 {{ is_array(old($name, $value)) ? 'mb-4' : '' }}"
             id="uppy-modal-{{ $key }}"
             title="{{ __('blade-components::components.add_more') }}"
              type="button"
@@ -69,22 +69,22 @@
 
 @push('scripts')
     <script>
-        var uploaded{{ $key }} = document.getElementById("uppy-uploaded-{{ $key }}");
-        var sortableUploaded{{ $key }} = Sortable.create(uploaded{{ $key }}, {
+        let uploaded{{ $key }} = document.getElementById("uppy-uploaded-{{ $key }}")
+        let sortableUploaded{{ $key }} = Sortable.create(uploaded{{ $key }}, {
             animation: 150,
             group: '{{ $key }}',
             onAdd: function (event) {
-                var item = event.item;
+                let item = event.item;
                 $(item).find('input').attr('name', '{{ $name }}[]');
             }
         });
 
-        var removed{{ $key }} = document.getElementById("uppy-removed-{{ $key }}");
-        var sortableRemoved{{ $key }} = Sortable.create(removed{{ $key }}, {
+        let removed{{ $key }} = document.getElementById("uppy-removed-{{ $key }}");
+        let sortableRemoved{{ $key }} = Sortable.create(removed{{ $key }}, {
             animation: 150,
             group: '{{ $key }}',
             onAdd: function (event) {
-                var item = event.item;
+                let item = event.item;
                 $(item).find('input').attr('name', '');
             }
         });
@@ -147,16 +147,16 @@
             }
         });
 
-        var imageTypes = ['png', 'tif', 'tiff', 'wbmp', 'ico', 'jng', 'bmp', 'svg', 'webp', 'jpg', 'jpeg'];
+        let imageTypes = ['png', 'tif', 'tiff', 'wbmp', 'ico', 'jng', 'bmp', 'svg', 'webp', 'jpg', 'jpeg'];
         function isImage(url) {
-            var extension = url.split('.').pop();
+            let extension = url.split('.').pop();
 
             return imageTypes.includes(extension);
         }
 
         function fileName(url) {
-            var name = url.split('/').pop();
-            var extension = url.split('.').pop();
+            let name = url.split('/').pop();
+            let extension = url.split('.').pop();
 
             if (name.length > 25) {
                 name = name.substring(0, 25) + '...' + extension;
@@ -172,10 +172,11 @@
 
             $('#uppy-removed-{{ $key }}').show();
 
+            let display
             if (isImage(response.body)) {
-                var display = '<img class="rounded" src="' + response.body + '" alt="" style="width: inherit;" />';
+                display = '<img class="rounded" src="' + response.body + '" alt="" style="width: inherit;" />';
             } else {
-                var display = '<a href="' + response.body +
+                display = '<a href="' + response.body +
                     '" target="_blank" class="rounded border-success" rel="noopener noreferrer">' +
                     '<i class="os-icon os-icon-documents-03"></i>' +
                     // TODO: Add filename

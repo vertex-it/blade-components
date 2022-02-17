@@ -16,7 +16,7 @@
     </div>
 
     <button
-        class="btn btn-white shadow-sm btn-sm btn-has-icon font-normal bc-btn-add bc-btn-add-{{ $id }} lg:-mt-4"
+        class="btn btn-white shadow-sm btn-has-icon font-normal bc-btn-add bc-btn-add-{{ $id }} lg:-mt-4"
         type="button"
     >
         <x-heroicon-o-plus height="16" width="16" />

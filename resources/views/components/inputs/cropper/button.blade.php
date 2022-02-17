@@ -3,7 +3,6 @@
         class="
             btn
             btn-white
-            btn-sm
             font-normal
             shadow-sm
             cropper-ar

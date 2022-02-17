@@ -1,7 +1,7 @@
 /* BREADCRUMBS START */
 
 .breadcrumbs {
-    @apply flex items-center text-primary text-xs;
+    @apply flex items-center text-xs;
 }
 
 .breadcrumbs > .item {
@@ -62,7 +62,7 @@
 }
 
 .form-input, .selectize-input {
-    @apply shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md;
+    @apply px-3 py-2 shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full text-sm md:text-base border border-gray-300 rounded-md;
 }
 
 /* Form components - TinyMCE */
@@ -96,3 +96,8 @@ form fieldset legend span {
 }
 
 /* FORMS END */
+/* CROPPER START */
+.aspect-ratios, .view-modes {
+    @apply flex justify-between;
+}
+/* CROPPER END */

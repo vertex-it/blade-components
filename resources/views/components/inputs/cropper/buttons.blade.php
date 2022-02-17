@@ -3,16 +3,13 @@
         <img id="cropper-image-{{ $name }}" style="height: 100%;">
     </div>
 
-    <div
-        class="flex justify-center mt-3 cropper-details-{{ $name }} mb-10"
-        data-name="{{ $name }}"
-    >
+    <div class="flex justify-center my-6 cropper-details-{{ $name }}" data-name="{{ $name }}">
         <div class="mr-5 view-modes">
-            <button class="btn btn-white btn-sm shadow-sm font-bold cropper-vm" data-value="1">
+            <button class="btn btn-white shadow-sm font-bold cropper-vm" data-value="1">
                 {{ __('Keep') }}
             </button>
 
-            <button class="btn btn-white btn-sm shadow-sm font-normal cropper-vm" data-value="0">
+            <button class="btn btn-white shadow-sm font-normal cropper-vm" data-value="0">
                 {{ __('Expand') }}
             </button>
         </div>
@@ -29,7 +26,7 @@
         </div>
     </div>
 
-    <div class="flex space-x-3 justify-center mb-5 text-gray-600 text-sm">
+    <div class="flex space-x-3 justify-center mb-6 text-gray-600 text-sm">
         <div>
             <label class="form-label az-content-{{ $name }}" for="cropper-{{ $name }}-x">
                 X
@@ -63,17 +60,13 @@
         </div>
     </div>
 
-    <div class="mt-3">
-        <div class="text-center">
-            <button
-                id="btn-crop-{{ $name }}"
-                class="btn btn-black"
-                data-name="{{ $name }}"
-                type="button"
-            >
-                <x-heroicon-o-scissors height="20px" width="20px" class="float-left mr-1" />
-                {{ __('Crop') }}
-            </button>
-        </div>
-    </div>
+    <button
+        id="btn-crop-{{ $name }}"
+        class="btn btn-black mx-auto"
+        data-name="{{ $name }}"
+        type="button"
+    >
+        <x-heroicon-o-scissors height="20px" width="20px" class="float-left mr-1" />
+        {{ __('Crop') }}
+    </button>
 </div>
