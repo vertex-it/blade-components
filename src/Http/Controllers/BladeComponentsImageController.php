@@ -27,7 +27,7 @@ class BladeComponentsImageController extends Controller
         );
 
         return response()->json(
-            url('/') . '/' . str_replace('public', 'storage', $image)
+            config('app.url') . '/' . str_replace('public', 'storage', $image)
         );
     }
 }
