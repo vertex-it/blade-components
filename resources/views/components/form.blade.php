@@ -4,7 +4,6 @@
     @if ($multipart)
         enctype="multipart/form-data"
     @endif
-    class="max-w-4xl mx-auto my-10"
 >
     @csrf
 
@@ -15,8 +14,10 @@
     <div class="form-content">{{ $slot }}</div>
 
     @if ($button)
-        <button class="btn btn-primary {{ $buttonClasses }}">
-            {{ $buttonText ?? 'Submit' }}
-        </button>
+        <div class="form-footer">
+            <button class="btn btn-primary font-medium px-8 {{ $buttonClasses }}">
+                {{ $buttonText ?? 'Submit' }}
+            </button>
+        </div>
     @endif
 </form>

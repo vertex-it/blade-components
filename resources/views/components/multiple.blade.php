@@ -1,8 +1,8 @@
-<div class="bc-row mb-8">
+<fieldset class="bc-row mb-8">
     @if ($label)
-        <p class="mb-6 text-gray-600">
-            {{ $label }}
-        </p>
+        <legend class="mb-8 text-primary-500">
+            <span>{{ $label }}</span>
+        </legend>
     @endif
 
     <div id="{{ $id }}">
@@ -22,7 +22,7 @@
         <x-heroicon-o-plus height="16" width="16" />
         {{ __('blade-components::components.add_more') }}
     </button>
-</div>
+</fieldset>
 
 @push('scripts')
     <script>

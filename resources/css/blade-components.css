@@ -23,18 +23,17 @@
 /* BREADCRUMBS END */
 
 /* FORMS START */
-/* TODO Check forms css */
 
 .tabs {
-    @apply border-b border-gray-200 mb-8 flex;
+    @apply border-b border-gray-200 mb-8 flex justify-center;
 }
 
 .tabs .tab-item {
-    @apply px-7 py-3 mr-3 text-sm text-gray-400 border-b-2 border-white uppercase hover:border-red-500;
+    @apply px-7 py-3 mr-3 text-sm text-gray-400 border-b-2 border-white uppercase hover:border-primary-500;
 }
 
 .tabs .tab-item.active {
-    @apply text-red-500 font-medium border-red-500 hover:border-red-600;
+    @apply text-primary-500 font-medium border-primary-500 hover:border-primary-600;
 }
 
 .tab-pane {
@@ -45,12 +44,16 @@
     @apply block;
 }
 
+.form-footer {
+    @apply bg-gray-50 flex justify-end -mx-8 -mb-8 px-8 py-4 rounded-b-lg;
+}
+
 .form-inline {
     @apply flex gap-x-6 flex-wrap lg:flex-nowrap w-full;
 }
 
 .form-group {
-    @apply mb-8 w-full;
+    @apply mb-9 w-full;
 }
 
 .form-inline > .form-group {
