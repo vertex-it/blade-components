@@ -5,11 +5,11 @@
 }
 
 .breadcrumbs > .item {
-    @apply mr-3;
+    @apply mr-2 tracking-wide text-gray-700;
 }
 
-.breadcrumbs > .item-link {
-    @apply hover:text-gray-900;
+.breadcrumbs > .item-link:hover {
+    @apply text-gray-800 underline;
 }
 
 .breadcrumbs > .item-last {
@@ -17,7 +17,7 @@
 }
 
 .breadcrumbs > .separator {
-    @apply mr-3 text-gray-600;
+    @apply mr-2 text-gray-500;
 }
 
 /* BREADCRUMBS END */
