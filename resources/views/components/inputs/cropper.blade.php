@@ -24,22 +24,6 @@
                 >
             </label>
         </div>
-{{--        <div class="custom-file">--}}
-{{--            <input--}}
-{{--                class="custom-file-input"--}}
-{{--                data-aspect-ratio-x="{{ $aspectRatioX ?? 0 }}"--}}
-{{--                data-aspect-ratio-y="{{ $aspectRatioY ?? 0 }}"--}}
-{{--                data-name="{{ $name }}"--}}
-{{--                id="{{ $getId }}"--}}
-{{--                type="file"--}}
-{{--                {{ ! old($name, $value) ? $outputRequired() : '' }}--}}
-{{--                {{ $attributes }}--}}
-{{--            >--}}
-{{--            <label class="custom-file-label" for="{{ $name }}">--}}
-{{--                <x-heroicon-o-upload height="20px" width="20px" class="float-left mr-1" />--}}
-{{--                <p>{{ __('blade-components::components.choose_file') }}</p>--}}
-{{--            </label>--}}
-{{--        </div>--}}
 
         <input
             type="hidden"
@@ -57,10 +41,10 @@
 
     @include('blade-components::components.inputs.cropper.buttons')
 
-    <div class="w-full md:w-1/2">
+    <div class="h-36">
         <img
             src="{{ old($name, $value) }}"
-            class="preview_{{ $name }}_cropped mt-3 rounded-lg border border-gray-200 p-1"
+            class="preview_{{ $name }}_cropped mt-3 rounded-lg border border-gray-200 p-1 h-36"
             @if (! old($name, $value))
                 style="display: none;"
             @endif
