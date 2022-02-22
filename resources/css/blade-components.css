@@ -29,7 +29,7 @@
 }
 
 .tabs .tab-item {
-    @apply px-7 py-3 mr-3 text-sm text-gray-400 border-b-2 border-white uppercase hover:border-primary-500;
+    @apply px-7 py-3 mr-3 text-xs md:text-sm text-gray-400 border-b-2 border-white uppercase hover:border-primary-500;
 }
 
 .tabs .tab-item.active {
@@ -45,7 +45,7 @@
 }
 
 .form-footer {
-    @apply bg-gray-50 flex justify-end -mx-8 -mb-8 px-8 py-4 rounded-b-lg;
+    @apply bg-gray-50 flex justify-end -mx-5 -mb-5 px-4 md:-mx-8 md:-mb-8 md:px-8 py-4 rounded-b-lg;
 }
 
 .form-inline {
@@ -53,7 +53,7 @@
 }
 
 .form-group {
-    @apply mb-9 w-full;
+    @apply mb-6 md:mb-9 w-full;
 }
 
 .form-inline > .form-group {
@@ -61,11 +61,11 @@
 }
 
 .form-label {
-    @apply block text-sm font-medium text-gray-700 mb-1;
+    @apply block text-xs md:text-sm font-medium text-gray-700 mb-1;
 }
 
 .form-input, .selectize-input {
-    @apply block px-3 py-2 w-full shadow-sm border border-gray-300 rounded-md text-sm focus:ring-primary-500 focus:border-primary-500;
+    @apply block px-3 py-2 w-full shadow-sm border border-gray-300 rounded-md text-xs md:text-sm focus:ring-primary-500 focus:border-primary-500;
 }
 
 .form-input-with-btn {
@@ -94,11 +94,11 @@ input:checked ~ .toggle-background {
 }
 
 form fieldset {
-    @apply my-8;
+    @apply my-6 md:my-9;
 }
 
 form fieldset legend {
-    @apply block w-full text-primary-500 mb-10 border-b border-gray-200;
+    @apply block w-full text-primary-500 mb-10 border-b border-gray-200 text-sm md:text-base;
     line-height: 0.1em;
 }
 

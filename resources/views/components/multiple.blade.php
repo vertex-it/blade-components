@@ -16,10 +16,10 @@
     </div>
 
     <button
-        class="btn btn-white shadow-sm btn-has-icon font-normal bc-btn-add bc-btn-add-{{ $id }} lg:-mt-4"
+        class="btn btn-white btn-sm shadow-sm btn-has-icon font-normal bc-btn-add bc-btn-add-{{ $id }} lg:-mt-4"
         type="button"
     >
-        <x-heroicon-o-plus height="16" width="16" />
+        <x-heroicon-o-plus height="14" width="14" />
         {{ __('blade-components::components.add_more') }}
     </button>
 </fieldset>
