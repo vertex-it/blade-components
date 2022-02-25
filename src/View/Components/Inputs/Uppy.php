@@ -32,4 +32,9 @@ class Uppy extends BaseInputComponent
     {
         return view('blade-components::components.inputs.uppy');
     }
+
+    public function getId()
+    {
+        return "uppy-modal-{$this->key}";
+    }
 }

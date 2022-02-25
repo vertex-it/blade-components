@@ -3,14 +3,14 @@
         height: 120px;
     }
 
-    .uploaded-container>img {
+    .uploaded-container > img, .uploaded-container > a > img {
         height: 100%;
         width: 100%;
         object-fit: cover;
     }
 
     .droppable-trash {
-        padding: 0.5em;
+        padding: 0.4em 0.9em 0.9em;
     }
 
     .droppable-trash img {
@@ -22,7 +22,7 @@
 
     <div>
         <button
-            class="btn btn-white btn-has-icon shadow-sm font-normal mt-4 {{ is_array(old($name, $value)) ? 'mb-4' : '' }}"
+            class="btn btn-white btn-has-icon shadow-sm font-normal {{ is_array(old($name, $value)) ? 'mb-1' : '' }}"
             id="uppy-modal-{{ $key }}"
             title="{{ __('blade-components::components.add_more') }}"
              type="button"
@@ -39,12 +39,12 @@
 
     <input name="{{ $name }}[]" type="hidden" value="">
 
-    <div class="flex flex-wrap justify-start items-center -m-2" id="uppy-uploaded-{{ $key }}">
+    <div class="flex flex-wrap justify-start items-center" id="uppy-uploaded-{{ $key }}">
         @foreach(old($name, $value) ?? [] as $url)
             @if($url)
-                <div class="flex-1 uploaded-container">
+                <div class="uploaded-container cursor-move mt-2 mr-2">
                     @if(in_array(pathinfo($url, PATHINFO_EXTENSION), ['jpg', 'jpeg']))
-                        <img class="p-1 border border-green-400 rounded-md" src="{{ $url }}"  alt=""/>
+                        <img class="rounded" src="{{ $url }}"  alt=""/>
                     @else
                         <a href="{{ $url }}" target="_blank" class="rounded" rel="noopener noreferrer">
                             <i class="os-icon os-icon-documents-03"></i>
@@ -58,10 +58,11 @@
     <div class="mb-2"></div>
 
     <div
-        class="flex droppable-trash mt-4 border-dashed border-2 border-gray-300"
+        class="flex droppable-trash mt-4 border-dashed border-2 border-gray-300 hidden"
         id="uppy-removed-{{ $key }}"
         style="{{ is_array(old($name, $value)) ? '' : 'display: none;' }}"
-    ></div>
+    >
+    </div>
 
     @include('blade-components::components.inputs.includes.comment')
     @include('blade-components::components.inputs.includes.error')
@@ -69,6 +70,10 @@
 
 @push('scripts')
     <script>
+        {{--if ($('uppy-uploaded-{{ $key }}').children().length < 1) {--}}
+        {{--    $('#uppy-removed-{{ $key }}').css({'display': 'none'})--}}
+        {{--}--}}
+
         let uploaded{{ $key }} = document.getElementById("uppy-uploaded-{{ $key }}")
         let sortableUploaded{{ $key }} = Sortable.create(uploaded{{ $key }}, {
             animation: 150,
@@ -92,6 +97,8 @@
         // TODO: Hide/Show uppy button
     </script>
     <script>
+        showOrHideTrash()
+
         $(document).on('click', '#uppy-modal-{{ $key }}', function (e) {
             e.preventDefault();
         });
@@ -147,7 +154,7 @@
             }
         });
 
-        let imageTypes = ['png', 'tif', 'tiff', 'wbmp', 'ico', 'jng', 'bmp', 'svg', 'webp', 'jpg', 'jpeg'];
+        var imageTypes = ['png', 'tif', 'tiff', 'wbmp', 'ico', 'jng', 'bmp', 'svg', 'webp', 'jpg', 'jpeg'];
         function isImage(url) {
             let extension = url.split('.').pop();
 
@@ -168,7 +175,9 @@
         }
 
         uppy{{ $key }}.on('upload-success', (file, response) => {
-            $('#uppy-modal-{{ $key }}').addClass('mb-4');
+            showOrHideTrash()
+
+            $('#uppy-modal-{{ $key }}').addClass('mb-1');
 
             $('#uppy-removed-{{ $key }}').show();
 
@@ -176,20 +185,25 @@
             if (isImage(response.body)) {
                 display = '<img class="rounded" src="' + response.body + '" alt="" style="width: inherit;" />';
             } else {
-                display = '<a href="' + response.body +
-                    '" target="_blank" class="rounded border-success" rel="noopener noreferrer">' +
-                    '<i class="os-icon os-icon-documents-03"></i>' +
-                    // TODO: Add filename
-                    // '<p>' + fileName(response.body) + '</p>'
-                    '</a>';
+                display = '<a href="' + response.body + '" target="_blank" title="' + file.name + '" rel="noopener noreferrer">' +
+                    '<img class="rounded" src="https://play-lh.googleusercontent.com/3tLaTWjP9kz56OwkbnbAnZoNp4HL28zcDMt5DEjt-kfuVhraWJBYC5XQRuMBf084JQ" alt="' + file.name + '" style="width: inherit;" />' +
+                '</a>';
             }
 
             $('#uppy-uploaded-{{ $key }}').append(
-                '<div class="uploaded-container cursor-move m-2">' +
+                '<div class="uploaded-container cursor-move mt-2 mr-2">' +
                     display +
                     '<input name="{{ $name }}[]" type="hidden" value="' + response.body + '">' +
                 '</div>'
             );
         });
+
+        function showOrHideTrash() {
+            if ($('#uppy-uploaded-{{ $key }}').children().length > 0) {
+                $('.droppable-trash').removeClass('hidden')
+            } else {
+                $('.droppable-trash').addClass('hidden')
+            }
+        }
     </script>
 @endpush
