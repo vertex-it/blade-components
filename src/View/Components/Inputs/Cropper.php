@@ -14,12 +14,13 @@ class Cropper extends BaseInputComponent
         $label = null,
         $placeholder = null,
         $value = null,
-        $required = null,
+        $required = false,
         $comment = null,
         $inline = null,
-        $aspectRatio = []
+        $aspectRatio = [],
+        $width = null,
     ) {
-        parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline);
+        parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline, $width);
 
         $this->aspectRatioX = $aspectRatio[0] ?? 0;
         $this->aspectRatioY = $aspectRatio[1] ?? 0;

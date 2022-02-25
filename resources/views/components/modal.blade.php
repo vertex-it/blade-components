@@ -13,10 +13,10 @@
                 </div>
             </div>
             <div class="modal-footer" style="display: none;">
-                <button type="button" class="m-0 modal-action-btn" id="confirm">
+                <button type="button" class="m-0 modal-action-btn btn btn-primary" id="confirm">
                     {{ __('Confirm') }}
                 </button>
-                <button type="button" class="btn btn-light btn-sm modal-close-btn" id="cancel">
+                <button type="button" class="btn btn-white modal-close-btn" id="cancel">
                     {{ __('Cancel') }}
                 </button>
             </div>

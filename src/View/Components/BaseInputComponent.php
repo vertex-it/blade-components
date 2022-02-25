@@ -7,14 +7,14 @@ use Illuminate\View\Component;
 
 abstract class BaseInputComponent extends Component
 {
-    public $name;
-    public $label;
-    public $placeholder;
-    public $value;
-    public $required;
-    public $comment;
-    public $inline;
-    public $id;
+    public string $name;
+    public ?string $label;
+    public ?string $placeholder;
+    public mixed $value;
+    public bool $required;
+    public ?string $comment;
+    public ?bool $inline;
+    public string $id;
     public $width;
 
     // FIX: Implement columns in all components
@@ -24,7 +24,7 @@ abstract class BaseInputComponent extends Component
         $label = null,
         $placeholder = null,
         $value = null,
-        $required = null,
+        $required = false,
         $comment = null,
         $inline = null,
         $width = null

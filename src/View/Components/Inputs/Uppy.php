@@ -6,17 +6,16 @@ use VertexIT\BladeComponents\View\Components\BaseInputComponent;
 
 class Uppy extends BaseInputComponent
 {
-    public $key;
-    public $route;
-    public $images;
-    public $maxFileSize;
+    public string $key;
+    public ?string $route;
+    public int $maxFileSize;
 
     public function __construct(
         $name,
         $label = null,
         $placeholder = null,
         $value = null,
-        $required = null,
+        $required = false,
         $comment = null,
         $inline = null,
         $route = null,

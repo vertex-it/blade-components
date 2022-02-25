@@ -13,7 +13,7 @@ class Toggle extends BaseInputComponent
         $label = null,
         $placeholder = null,
         $value = null,
-        $required = null,
+        $required = false,
         $comment = null,
         $inline = null,
         $options = []

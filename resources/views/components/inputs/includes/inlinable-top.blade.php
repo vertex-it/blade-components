@@ -1,3 +1,3 @@
-<div class="form-group @if(isset($fullWidth)) w-full @endif">
+<div class="form-group {{ $width }}">
 {{-- TODO form-group mora primati klase za sirinu ili marginu--}}
 {{-- TODO obrisati $fullWidth --}}

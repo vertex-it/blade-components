@@ -2,7 +2,7 @@
 @include('blade-components::components.inputs.includes.label')
 
 <input
-    class="form-input"
+    class="form-input @error($name) has-error @enderror"
     id="{{ $getId }}"
     name="{{ $name }}"
     placeholder="{{ $getPlaceholder() }}"

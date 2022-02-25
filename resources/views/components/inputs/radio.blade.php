@@ -2,7 +2,7 @@
     @include('blade-components::components.inputs.includes.label')
 
     @foreach($getPreparedOptions() as $key => $label)
-        <div>
+        <div class="mb-1">
             <label>
                 <input
                     name="{{ $name }}"

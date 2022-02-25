@@ -13,7 +13,7 @@ class Date extends BaseInputComponent
         $label = null,
         $placeholder = null,
         $value = null,
-        $required = null,
+        $required = false,
         $comment = null,
         $inline = null,
         $time = null

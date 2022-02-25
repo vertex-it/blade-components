@@ -9,23 +9,24 @@ class Select extends BaseInputComponent
 {
     use HasOptions;
 
-    public $options;
-    public $selectize;
-    public $multiple;
+    public array $options;
+    public bool $selectize;
+    public bool $multiple;
 
     public function __construct(
         $name,
         $label = null,
         $placeholder = null,
         $value = null,
-        $required = null,
+        $required = false,
         $comment = null,
         $inline = null,
         $options = [],
         $selectize = false,
-        $multiple = false
+        $multiple = false,
+        $width = null,
     ) {
-        parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline);
+        parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline, $width);
 
         $this->options = $options;
         $this->selectize = $selectize;

@@ -1,16 +1,11 @@
 <div class="form-group">
     <div class="">
         @include('blade-components::components.inputs.includes.label')
-        <div class="form-input">
-            <label
-                for="{{ $getId }}"
-                class="block cursor-pointer"
-            >
-                <span class="text-gray-400 flex items-center">
-                    <svg width="16" height="16" class="mr-2" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span id="{{ $getId }}_imagename">{{ __('blade-components::components.choose_file') }}</span>
+        <div class="inline-block">
+            <label for="{{ $getId }}" class="block btn btn-white shadow-sm font-normal ">
+                <span class="btn-has-icon">
+                    <x-heroicon-o-camera height="16" width="16" />
+                    <span id="{{ $getId }}_imagename">{{ __('blade-components::components.choose_image') }}</span>
                 </span>
                 <input
                     class="sr-only"
@@ -41,15 +36,13 @@
 
     @include('blade-components::components.inputs.cropper.buttons')
 
-    <div class="h-36">
-        <img
-            src="{{ old($name, $value) }}"
-            class="preview_{{ $name }}_cropped mt-3 rounded-lg border border-gray-200 p-1 h-36"
-            @if (! old($name, $value))
-                style="display: none;"
-            @endif
-        >
-    </div>
+    <img
+        src="{{ old($name, $value) }}"
+        class="preview_{{ $name }}_cropped mt-3 rounded h-36"
+        @if (! old($name, $value))
+            style="display: none;"
+        @endif
+    >
 </div>
 
 @push ('scripts')

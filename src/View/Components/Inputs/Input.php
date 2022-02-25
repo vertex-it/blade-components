@@ -6,24 +6,22 @@ use VertexIT\BladeComponents\View\Components\BaseInputComponent;
 
 class Input extends BaseInputComponent
 {
-    public $type;
-    public $fullWidth;
+    public string $type;
 
     public function __construct(
         $name,
         $label = null,
         $placeholder = null,
         $value = null,
-        $required = null,
+        $required = false,
         $comment = null,
         $inline = null,
         $type = 'text',
-        $fullWidth = null
+        $width = null
     ) {
-        parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline, $fullWidth);
+        parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline, $width);
 
         $this->type = $type;
-        $this->fullWidth = $fullWidth;
     }
 
     public function render()

@@ -3,8 +3,8 @@
         <img id="cropper-image-{{ $name }}" style="height: 100%;">
     </div>
 
-    <div class="flex justify-center my-6 cropper-details-{{ $name }}" data-name="{{ $name }}">
-        <div class="mr-5 view-modes">
+    <div class="flex justify-center flex-wrap my-3 cropper-details-{{ $name }}" data-name="{{ $name }}">
+        <div class="mr-5 view-modes mb-3">
             <button class="btn btn-white shadow-sm font-bold cropper-vm" data-value="1">
                 {{ __('Keep') }}
             </button>
@@ -14,7 +14,7 @@
             </button>
         </div>
 
-        <div class="aspect-ratios">
+        <div class="aspect-ratios mb-3">
             @foreach ([[1,1], [2,3], [4,3], [16,9], [0,0]] as $ratios)
                 @include('blade-components::components.inputs.cropper.button', [
                     'aspectRatioX' => $aspectRatioX,

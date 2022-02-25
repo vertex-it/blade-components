@@ -3,7 +3,7 @@
     @if ($sortable)
         <div class="bc-sort-row">
             <button
-                class="cursor-move btn btn-transparent btn-sm py-3 shadow-none font-normal hidden lg:block"
+                class="cursor-move btn btn-transparent font-medium hidden lg:block text-gray-700 py-3 mb-2"
                 type="button"
                 title="{{ __('blade-components::components.sort_row') }}"
             >

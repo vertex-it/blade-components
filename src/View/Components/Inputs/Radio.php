@@ -9,17 +9,17 @@ class Radio extends BaseInputComponent
 {
     use HasOptions;
 
-    public $options;
+    public ?array $options;
 
     public function __construct(
         $name,
+        $options,
         $label = null,
         $placeholder = null,
         $value = null,
-        $required = null,
+        $required = false,
         $comment = null,
         $inline = null,
-        $options
     ) {
         parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline);
 

@@ -6,17 +6,17 @@ use VertexIT\BladeComponents\View\Components\BaseInputComponent;
 
 class Textarea extends BaseInputComponent
 {
-    public $richText;
+    public bool $richText;
 
     public function __construct(
         $name,
         $label = null,
         $placeholder = null,
         $value = null,
-        $required = null,
+        $required = false,
         $comment = null,
         $inline = null,
-        $richText = null,
+        $richText = false,
         $width = null,
     ) {
         parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline, $width);
