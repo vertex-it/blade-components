@@ -11,7 +11,7 @@ class Multiple extends Component
     public $sortable;
     public $id;
 
-    public function __construct($label = null, $sortable = false)
+    public function __construct($label = null, $sortable = true)
     {
         $this->label = $label;
         $this->sortable = $sortable;

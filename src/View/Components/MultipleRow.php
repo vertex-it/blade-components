@@ -8,7 +8,7 @@ class MultipleRow extends Component
 {
     public bool $sortable;
 
-    public function __construct($sortable = false)
+    public function __construct($sortable = true)
     {
         $this->sortable = $sortable;
     }
