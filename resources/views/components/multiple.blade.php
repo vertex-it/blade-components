@@ -24,7 +24,7 @@
     </button>
 </fieldset>
 
-@push('scripts')
+@push('master-scripts')
     <script>
         if ($('#{{ $id }}').find('.bc-multiple').length === 1) {
             $('#{{ $id }}').find('.btn-group-delete-row').addClass('hidden')
@@ -46,7 +46,7 @@
 @endpush
 
 @once
-    @push('scripts')
+    @push('master-scripts')
         <script>
             $(document).ready(function () {
                 $(document).on('click', '.bc-btn-add', function (e) {

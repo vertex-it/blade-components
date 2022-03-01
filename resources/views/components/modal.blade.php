@@ -25,7 +25,7 @@
 </div>
 
 @once
-    @push('scripts')
+    @push('master-scripts')
         <script>
             $(document).on('click', '.btn-open-modal', function (e) {
                 e.preventDefault();

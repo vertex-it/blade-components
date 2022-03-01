@@ -36,7 +36,7 @@
 
 @include('blade-components::components.inputs.includes.inlinable-bottom')
 
-@push('scripts')
+@push('master-scripts')
     <script>
         document.getElementById("{{ $getId }}").onchange = function() {
             var fullName = this.value.split('\\').pop().split('.');

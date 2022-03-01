@@ -19,7 +19,7 @@
 
 @if ($richText)
     @once
-        @push ('scripts')
+        @push ('master-scripts')
             <script>
                 $(document).ready(function () {
                     tinymce.init({

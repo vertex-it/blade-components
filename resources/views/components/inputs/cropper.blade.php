@@ -45,7 +45,7 @@
     >
 </div>
 
-@push ('scripts')
+@push ('master-scripts')
     <script>
         $(document).ready(function () {
             $('#{{ $getId }}').change(function() {

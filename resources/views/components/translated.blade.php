@@ -17,7 +17,7 @@
 </div>
 
 @once
-    @push('scripts')
+    @push('master-scripts')
         <script>
             $('.tab-item').on('click', function (e) {
                 e.preventDefault()

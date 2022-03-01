@@ -53,7 +53,7 @@
 @include('blade-components::components.inputs.includes.error')
 @include('blade-components::components.inputs.includes.inlinable-bottom')
 
-@push('scripts')
+@push('master-scripts')
     <script>
         $(document).on('click', '#apply_to_all_{{ $name }}', function() {
             let applyDay = $(this).parents('#row_work_time');

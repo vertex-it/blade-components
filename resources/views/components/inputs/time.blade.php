@@ -22,7 +22,7 @@
 @include('blade-components::components.inputs.includes.inlinable-bottom')
 
 @once
-    @push('scripts')
+    @push('master-scripts')
         <script>
             $(document).ready(function () {
                 initTimePicker();

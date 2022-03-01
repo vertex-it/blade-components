@@ -68,7 +68,7 @@
     @include('blade-components::components.inputs.includes.error')
 </div>
 
-@push('scripts')
+@push('master-scripts')
     <script>
         {{--if ($('uppy-uploaded-{{ $key }}').children().length < 1) {--}}
         {{--    $('#uppy-removed-{{ $key }}').css({'display': 'none'})--}}

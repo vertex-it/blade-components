@@ -36,7 +36,7 @@
 
 @if ($selectize)
     @once
-        @push('scripts')
+        @push('master-scripts')
             <script>
                 selectizeDefaultConfig = {
                     plugins: ['remove_button']

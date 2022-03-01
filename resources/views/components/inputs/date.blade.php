@@ -21,7 +21,7 @@
 @include('blade-components::components.inputs.includes.error')
 @include('blade-components::components.inputs.includes.inlinable-bottom')
 
-@push('scripts')
+@push('master-scripts')
     <script>
         $(document).ready(function () {
             flatpickr('#{{ $getId }}', {
