@@ -1,6 +1,3 @@
-// jQuery (required for: Cropper)
-window.$ = window.jQuery = require('jquery')
-
 // Sortable
 window.Sortable = require('sortablejs/Sortable')
 
