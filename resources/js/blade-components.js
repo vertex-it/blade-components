@@ -1,3 +1,6 @@
+// Add jQuery init so selectize can work
+window.$ = window.jQuery = require('jquery')
+
 // Sortable
 window.Sortable = require('sortablejs/Sortable')
 
