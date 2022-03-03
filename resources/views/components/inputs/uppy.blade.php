@@ -32,6 +32,7 @@
             {{ __('blade-components::components.add_more') }}
         </button>
     </div>
+    @include('blade-components::components.inputs.includes.comment')
 
     <div class="uppy-{{ $key }}">
         <div id="drag-drop-area-{{ $key }}"></div>
@@ -64,7 +65,6 @@
     >
     </div>
 
-    @include('blade-components::components.inputs.includes.comment')
     @include('blade-components::components.inputs.includes.error')
 </div>
 

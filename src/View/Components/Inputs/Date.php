@@ -16,9 +16,10 @@ class Date extends BaseInputComponent
         $required = false,
         $comment = null,
         $inline = null,
+        $width = null,
         $time = null
     ) {
-        parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline);
+        parent::__construct($name, $label, $placeholder, $value, $required, $comment, $inline, $width);
 
         $this->time = $time;
     }
