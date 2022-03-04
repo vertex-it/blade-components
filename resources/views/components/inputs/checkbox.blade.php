@@ -11,7 +11,7 @@
                     {{ $checkIfActive($key, ' checked ') }}
                     {{ $attributes }}
                 >
-                <span class="ml-1 text-gray-800">
+                <span class="ml-1 text-xs md:text-sm text-gray-800">
                     {{ $label }}
                 </span>
             </label>
