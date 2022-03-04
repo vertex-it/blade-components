@@ -86,7 +86,7 @@
             })
 
             function cloneElement($el) {
-                $el.find('select.bc-select').each(function (i) {
+                $el.find('select.selectize').each(function (i) {
                     if ($(this)[0].selectize) {
                         var value = $(this).val()
                         $(this)[0].selectize.destroy()
@@ -105,7 +105,7 @@
             }
 
             function reinitializeSelectize() {
-                $('select.bc-select').each(function (i) {
+                $('select.selectize').each(function (i) {
                     if (! $(this)[0].selectize) {
                         $(this).selectize(selectizeDefaultConfig)
                     }
@@ -113,7 +113,10 @@
             }
 
             function incrementInputArrayKeys(element, numberOfRows) {
-                element.find('input, textarea').attr('name', function (i, name) {
+                element
+                    .find('select, input, textarea')
+                    .not('input[type="select-one"]')
+                    .attr('name', function (i, name) {
                     return name.replace(/\[[0-9](.+?)]/, function (value) {
                         return value.replace(/[0-9]+/, numberOfRows)
                     })
