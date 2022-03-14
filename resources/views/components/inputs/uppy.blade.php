@@ -44,11 +44,13 @@
         @foreach(old($name, $value) ?? [] as $url)
             @if($url)
                 <div class="uploaded-container cursor-move mt-2 mr-2">
-                    @if(in_array(pathinfo($url, PATHINFO_EXTENSION), ['jpg', 'jpeg']))
-                        <img class="rounded" src="{{ $url }}"  alt=""/>
+                    @if(in_array(pathinfo($url, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png']))
+                        <a href="{{ $url }}" target="_blank" rel="noopener noreferrer">
+                            <img class="rounded" src="{{ $url }}"  alt="{{ $url }}" title="{{ $url }}"/>
+                        </a>
                     @else
-                        <a href="{{ $url }}" target="_blank" class="rounded" rel="noopener noreferrer">
-                            <i class="os-icon os-icon-documents-03"></i>
+                        <a href="{{ $url }}" target="_blank" rel="noopener noreferrer">
+                            <img class="rounded" src="https://play-lh.googleusercontent.com/3tLaTWjP9kz56OwkbnbAnZoNp4HL28zcDMt5DEjt-kfuVhraWJBYC5XQRuMBf084JQ" alt="{{ $url }}" title="{{ $url }}">
                         </a>
                     @endif
                     <input name="{{ $name }}[]" type="hidden" value="{{ $url }}">
