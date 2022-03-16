@@ -2,7 +2,7 @@
     <div class="">
         @include('blade-components::components.inputs.includes.label')
         <div class="inline-block">
-            <label for="{{ $getId }}" class="block btn btn-white shadow-sm font-normal ">
+            <label for="{{ $getId }}" class="block btn btn-white font-normal">
                 <span class="btn-has-icon">
                     <x-heroicon-o-camera height="16" width="16" />
                     <span id="{{ $getId }}_imagename">{{ __('blade-components::components.choose_image') }}</span>
@@ -38,7 +38,7 @@
 
     <img
         src="{{ old($name, $value) }}"
-        class="preview_{{ $name }}_cropped mt-3 rounded h-36"
+        class="preview_{{ $name }}_cropped mt-3 rounded h-36 shadow-sm"
         @if (! old($name, $value))
             style="display: none;"
         @endif

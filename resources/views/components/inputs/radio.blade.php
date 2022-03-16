@@ -12,7 +12,7 @@
                     {{ $outputRequired() }}
                     {{ $attributes }}
                 >
-                <span class="ml-1 text-xs md:text-sm text-gray-800">{{ $label }}</span>
+                <span class="ml-2 mb-0 form-label">{{ $label }}</span>
             </label>
         </div>
     @endforeach

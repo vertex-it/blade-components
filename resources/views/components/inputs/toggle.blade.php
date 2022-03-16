@@ -14,7 +14,7 @@
             <div class="toggle-background block bg-gray-200 w-10 h-6 rounded-full"></div>
             <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
         </div>
-        <div class="ml-3 text-xs md:text-sm text-gray-700">
+        <div class="ml-3 mb-0 form-label">
             {{ $getLabel }} @if ($required)<span class="text-red-500">*</span>@endif
         </div>
     </label>

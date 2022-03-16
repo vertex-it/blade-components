@@ -62,7 +62,7 @@
 
     <button
         id="btn-crop-{{ $name }}"
-        class="btn btn-black mx-auto"
+        class="block btn btn-primary mx-auto"
         data-name="{{ $name }}"
         type="button"
     >

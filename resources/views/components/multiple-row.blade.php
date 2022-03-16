@@ -1,9 +1,9 @@
-<div class="flex flex-wrap lg:flex-nowrap gap-x-2 items-center bc-multiple">
+<div class="flex flex-wrap lg:flex-nowrap gap-x-2 items-center justify-end bc-multiple">
     {{ $slot }}
     @if ($sortable)
-        <div class="bc-sort-row">
+        <div class="-mt-6 lg:mt-0 bc-sort-row">
             <button
-                class="cursor-move btn btn-transparent font-medium hidden lg:block text-gray-700 py-3 mb-2"
+                class="cursor-move btn btn-transparent rounded-full hover:bg-gray-100 hidden lg:block text-gray-700 px-3 py-3 mb-2"
                 type="button"
                 title="{{ __('blade-components::components.sort_row') }}"
             >
@@ -19,7 +19,7 @@
             </button>
         </div>
     @endif
-    <div class="btn-group-delete-row">
+    <div class="-mt-6 lg:mt-0 btn-group-delete-row">
         <button
             class="btn btn-white btn-sm text-red-500 btn-has-icon shadow-sm font-normal bc-delete-row lg:hidden mb-6"
             type="button"
@@ -28,11 +28,11 @@
         </button>
 
         <button
-            class="btn btn-transparent font-medium bc-delete-row hidden lg:block text-red-500 py-3 mb-2"
+            class="btn btn-transparent rounded-full hover:bg-gray-100 bc-delete-row hidden lg:block text-red-500 px-3 py-3 mb-2"
             type="button"
             title="{{ __('blade-components::components.delete_row') }}"
         >
-            <x-heroicon-o-x height="16" width="16" />
+            <x-heroicon-o-trash height="16" width="16" />
         </button>
     </div>
 </div>

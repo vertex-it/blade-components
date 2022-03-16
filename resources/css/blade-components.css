@@ -49,7 +49,7 @@
 }
 
 .form-footer {
-    @apply bg-gray-50 flex justify-end -mx-5 -mb-5 px-4 md:-mx-8 md:-mb-8 md:px-8 py-4 rounded-b-lg;
+    @apply bg-gray-50 flex gap-x-3 justify-end -mx-5 -mb-5 px-4 md:-mx-8 md:-mb-8 md:px-8 py-4 rounded-b-xl;
 }
 
 .form-inline {
@@ -69,7 +69,11 @@
 }
 
 .form-input, .selectize-input {
-    @apply block px-3 py-2 w-full shadow-sm border border-gray-300 rounded text-xs md:text-sm focus:ring-primary-500 focus:border-primary-500;
+    @apply block px-3 py-2 w-full text-gray-800 shadow-sm border border-gray-300 rounded-md text-xs md:text-sm lg:text-base focus:ring-primary-500 focus:border-primary-500;
+}
+
+input {
+    @apply placeholder-gray-400
 }
 
 .form-input.has-error {
@@ -174,6 +178,10 @@ form fieldset legend span {
 
 .uppy-Dashboard-FileCard-actions, .uppy-DashboardContent-bar, .uppy-StatusBar-actions, .uppy-DashboardContent-bar {
     @apply bg-gray-50 !important
+}
+
+.uppy-StatusBar-actions {
+    @apply z-10 !important
 }
 
 .uppy-Dashboard-files {
