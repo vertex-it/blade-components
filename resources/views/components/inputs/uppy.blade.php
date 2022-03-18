@@ -22,13 +22,12 @@
 
     <div>
         <button
-            class="btn btn-white btn-has-icon shadow-sm font-normal {{ is_array(old($name, $value)) ? 'mb-1' : '' }}"
+            class="btn btn-gray btn-has-icon {{ is_array(old($name, $value)) ? 'mb-1' : '' }}"
             id="uppy-modal-{{ $key }}"
             title="{{ __('blade-components::components.add_more') }}"
              type="button"
         >
-{{--                TODO: Document blade-ui-kit/blade-heroicons dependency--}}
-            <x-heroicon-o-plus height="16" width="16" />
+            <x-heroicon-o-plus />
             {{ __('blade-components::components.add_more') }}
         </button>
     </div>

@@ -2,9 +2,9 @@
     <div class="">
         @include('blade-components::components.inputs.includes.label')
         <div class="inline-block">
-            <label for="{{ $getId }}" class="block btn btn-white font-normal">
+            <label for="{{ $getId }}" class="block btn btn-gray">
                 <span class="btn-has-icon">
-                    <x-heroicon-o-camera height="16" width="16" />
+                    <x-heroicon-o-camera />
                     <span id="{{ $getId }}_imagename">{{ __('blade-components::components.choose_image') }}</span>
                 </span>
                 <input

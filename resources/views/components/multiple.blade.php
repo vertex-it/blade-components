@@ -15,7 +15,7 @@
         @endif
     </div>
 
-    <button class="mx-auto btn btn-block btn-white flex justify-center gap-x-2 bc-btn-add bc-btn-add-{{ $id }} lg:-mt-4" type="button">
+    <button class="btn btn-gray btn-has-icon bc-btn-add bc-btn-add-{{ $id }} lg:-mt-4" type="button">
         <x-heroicon-o-plus height="14" width="14" />
         {{ __('blade-components::components.add_more') }}
     </button>
