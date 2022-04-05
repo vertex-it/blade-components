@@ -76,6 +76,10 @@ input {
     @apply placeholder-gray-400
 }
 
+input:disabled {
+    @apply bg-gray-100 cursor-not-allowed !important
+}
+
 .form-input.has-error {
     @apply border-red-500;
 }
@@ -210,7 +214,7 @@ form fieldset legend span {
 }
 
 .modal-title {
-    @apply text-lg leading-6 font-medium text-gray-900;
+    @apply text-lg md:text-xl leading-6 font-medium text-center text-gray-900;
 }
 
 .modal-content {

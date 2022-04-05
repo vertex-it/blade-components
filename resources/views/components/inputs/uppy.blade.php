@@ -201,9 +201,9 @@
 
         function showOrHideTrash() {
             if ($('#uppy-uploaded-{{ $key }}').children().length > 0) {
-                $('.droppable-trash').removeClass('hidden')
+                $('#uppy-removed-{{ $key }}').removeClass('hidden')
             } else {
-                $('.droppable-trash').addClass('hidden')
+                $('#uppy-removed-{{ $key }}').addClass('hidden')
             }
         }
     </script>

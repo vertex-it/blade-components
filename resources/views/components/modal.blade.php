@@ -7,10 +7,8 @@
 
         <div class="modal-data">
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div class="text-center">
-                    <h3 class="modal-title"></h3>
-                    <div class="modal-content"></div>
-                </div>
+                <h3 class="modal-title"></h3>
+                <div class="modal-content"></div>
             </div>
             <div class="modal-footer" style="display: none;">
                 <button type="button" class="m-0 modal-action-btn btn btn-primary" id="confirm">

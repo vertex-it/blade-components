@@ -9,7 +9,7 @@
     >
         <button
             id="apply_to_all_{{ $name }}"
-            class="btn btn-primary btn-has-icon mb-6"
+            class="btn btn-gray btn-has-icon mb-6"
             title="Primjenite na sve dane"
             type="button"
         >
