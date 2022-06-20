@@ -16,7 +16,9 @@
     </div>
 
     <button class="btn btn-gray btn-has-icon bc-btn-add bc-btn-add-{{ $id }} lg:-mt-4" type="button">
-        <x-heroicon-o-plus height="14" width="14" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+        </svg>
         {{ __('blade-components::components.add_more') }}
     </button>
 </fieldset>
