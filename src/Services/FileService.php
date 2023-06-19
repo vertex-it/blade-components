@@ -4,6 +4,7 @@ namespace VertexIT\BladeComponents\Services;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use RuntimeException;
 
 class FileService
 {
@@ -115,13 +116,20 @@ class FileService
     /**
      * Makes directory if it does not exist
      *
-     * @param  string  $path
+     * @param string $path
      * @return void
      */
-    protected function makeDirectory($path)
+    protected function makeDirectory(string $path): void
     {
-        if (! Storage::exists($path)) {
-            Storage::makeDirectory($path);
+        if (Storage::exists($path)) {
+            return;
+        }
+
+        if (
+            ! mkdir($currentDirectory = Storage::path($path), 0755, true)
+            && ! is_dir($currentDirectory)
+        ) {
+            throw new RuntimeException("Directory {$path} was not created.");
         }
     }
 
