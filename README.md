@@ -27,31 +27,31 @@ If you are installing blade-components for the first time you will be asked to g
 
 ```bash
 # Sortable JS (required)
-npm install sortablejs
+npm install sortablejs@^1.15.0
 
 # Image Cropper
-npm install jquery cropperjs jquery-cropper
+npm install jquery@^3.6.4 cropperjs@^1.5.13 jquery-cropper@^1.0.1
 
 # Date
-npm install flatpickr
+npm install flatpickr@^4.6.13
 
 # Select
-npm install selectize
+npm install selectize@^0.12.6
 
 # Textarea
-npm install tinymce
+npm install tinymce@^5.10.7
 
 # Timepicker
-npm install timepicker
+npm install timepicker@^1.14.0
 
 # Uppy
-npm install uppy
+npm install uppy@^2.3.0
 
 # Bootstrap Switch
-npm install bootstrap4-toggle
+npm install bootstrap4-toggle@^3.6.1
 
 # Or if you want to install all the dependencies use this command
-npm install jquery sortablejs cropperjs jquery-cropper flatpickr selectize tinymce timepicker uppy bootstrap4-toggle
+npm install jquery@^3.6.4 sortablejs@^1.15.0 cropperjs@^1.5.13 jquery-cropper@^1.0.1 flatpickr@^4.6.13 selectize@^0.12.6 tinymce@^5.10.7 timepicker@^1.14.0 uppy@^2.3.0 bootstrap4-toggle@^3.6.1
 
 ```
 
