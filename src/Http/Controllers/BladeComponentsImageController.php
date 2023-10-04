@@ -2,32 +2,24 @@
 
 namespace VertexIT\BladeComponents\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Storage;
 use VertexIT\BladeComponents\Services\FileService;
 
 class BladeComponentsImageController extends Controller
 {
-    /**
-     * @var FileService
-     */
-    protected $fileService;
 
-    public function __construct(FileService $fileService)
-    {
-        $this->fileService = $fileService;
+    public function __construct(
+        protected FileService $fileService
+    ) {
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        $image = $this->fileService->upload(
-            $request->image,
-            'temp',
-            $request->name ?? ''
-        );
+        $image = $this->fileService->upload($request->image, 'temp', $request->name ?? '');
 
-        return response()->json(
-            config('app.url') . '/' . str_replace('public', 'storage', $image)
-        );
+        return response()->json(Storage::url($image));
     }
 }
