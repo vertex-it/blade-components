@@ -50,10 +50,7 @@
         "laravel": {
             "providers": [
                 "VertexIT\\BladeComponents\\BladeComponentsServiceProvider"
-            ],
-            "aliases": {
-                "BladeComponents": "VertexIT\\BladeComponents\\BladeComponentsFacade"
-            }
+            ]
         }
     }
 }
