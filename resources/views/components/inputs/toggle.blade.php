@@ -8,6 +8,7 @@
                 id="{{ $getId }}"
                 class="sr-only"
                 name="{{ $name }}"
+                value="1"
                 {{ old($name, $value) ? ' checked ' : '' }}
                 {{ $attributes }}
             >
