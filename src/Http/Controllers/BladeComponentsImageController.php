@@ -18,7 +18,7 @@ class BladeComponentsImageController extends Controller
 
     public function store(Request $request): JsonResponse
     {
-        $image = $this->fileService->upload($request->image, 'temp', $request->name ?? '');
+        $image = $this->fileService->store($request->image, 'temp', $request->name ?? '');
 
         return response()->json(Storage::url($image));
     }
